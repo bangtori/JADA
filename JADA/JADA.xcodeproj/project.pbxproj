@@ -20,6 +20,10 @@
 		53A2CB742B4AF8CF0060B272 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 53A2CB732B4AF8CF0060B272 /* SnapKit */; };
 		53A2CB762B4AFC9A0060B272 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53A2CB752B4AFC9A0060B272 /* APIKeys.plist */; };
 		53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB772B4AFD540060B272 /* Bundle+Extension.swift */; };
+		53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB7A2B4AFE050060B272 /* UIViewController+Extension.swift */; };
+		53A2CB7D2B4AFE1D0060B272 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB7C2B4AFE1D0060B272 /* UIView+Extension.swift */; };
+		53A2CB7F2B4AFE300060B272 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB7E2B4AFE300060B272 /* UIFont+Extension.swift */; };
+		53A2CB812B4AFF660060B272 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB802B4AFF660060B272 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,10 @@
 		53A2CB5F2B4AF76C0060B272 /* JADAUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JADAUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		53A2CB752B4AFC9A0060B272 /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		53A2CB772B4AFD540060B272 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		53A2CB7A2B4AFE050060B272 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		53A2CB7C2B4AFE1D0060B272 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		53A2CB7E2B4AFE300060B272 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		53A2CB802B4AFF660060B272 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +123,7 @@
 				53A2CB472B4AF76C0060B272 /* LaunchScreen.storyboard */,
 				53A2CB4A2B4AF76C0060B272 /* Info.plist */,
 				53A2CB752B4AFC9A0060B272 /* APIKeys.plist */,
-				53A2CB772B4AFD540060B272 /* Bundle+Extension.swift */,
+				53A2CB792B4AFDEC0060B272 /* Extension */,
 			);
 			path = JADA;
 			sourceTree = "<group>";
@@ -142,6 +150,18 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53A2CB792B4AFDEC0060B272 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				53A2CB772B4AFD540060B272 /* Bundle+Extension.swift */,
+				53A2CB7A2B4AFE050060B272 /* UIViewController+Extension.swift */,
+				53A2CB7C2B4AFE1D0060B272 /* UIView+Extension.swift */,
+				53A2CB7E2B4AFE300060B272 /* UIFont+Extension.swift */,
+				53A2CB802B4AFF660060B272 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,10 +304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53A2CB7F2B4AFE300060B272 /* UIFont+Extension.swift in Sources */,
+				53A2CB7D2B4AFE1D0060B272 /* UIView+Extension.swift in Sources */,
 				53A2CB412B4AF76B0060B272 /* ViewController.swift in Sources */,
 				53A2CB3D2B4AF76B0060B272 /* AppDelegate.swift in Sources */,
 				53A2CB3F2B4AF76B0060B272 /* SceneDelegate.swift in Sources */,
+				53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
+				53A2CB812B4AFF660060B272 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
