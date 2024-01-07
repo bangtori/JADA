@@ -116,14 +116,9 @@
 		53A2CB3B2B4AF76B0060B272 /* JADA */ = {
 			isa = PBXGroup;
 			children = (
-				53A2CB3C2B4AF76B0060B272 /* AppDelegate.swift */,
-				53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */,
-				53A2CB402B4AF76B0060B272 /* ViewController.swift */,
-				53A2CB452B4AF76C0060B272 /* Assets.xcassets */,
-				53A2CB472B4AF76C0060B272 /* LaunchScreen.storyboard */,
-				53A2CB4A2B4AF76C0060B272 /* Info.plist */,
-				53A2CB752B4AFC9A0060B272 /* APIKeys.plist */,
+				53A2CB832B4B00E90060B272 /* Config */,
 				53A2CB792B4AFDEC0060B272 /* Extension */,
+				53A2CB822B4B00D00060B272 /* ViewController */,
 			);
 			path = JADA;
 			sourceTree = "<group>";
@@ -162,6 +157,27 @@
 				53A2CB802B4AFF660060B272 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		53A2CB822B4B00D00060B272 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53A2CB402B4AF76B0060B272 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		53A2CB832B4B00E90060B272 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				53A2CB3C2B4AF76B0060B272 /* AppDelegate.swift */,
+				53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */,
+				53A2CB452B4AF76C0060B272 /* Assets.xcassets */,
+				53A2CB472B4AF76C0060B272 /* LaunchScreen.storyboard */,
+				53A2CB4A2B4AF76C0060B272 /* Info.plist */,
+				53A2CB752B4AFC9A0060B272 /* APIKeys.plist */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
