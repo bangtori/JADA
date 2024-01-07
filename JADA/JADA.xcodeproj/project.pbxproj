@@ -16,6 +16,9 @@
 		53A2CB542B4AF76C0060B272 /* JADATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB532B4AF76C0060B272 /* JADATests.swift */; };
 		53A2CB5E2B4AF76C0060B272 /* JADAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB5D2B4AF76C0060B272 /* JADAUITests.swift */; };
 		53A2CB602B4AF76C0060B272 /* JADAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB5F2B4AF76C0060B272 /* JADAUITestsLaunchTests.swift */; };
+		53A2CB6F2B4AF8920060B272 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 53A2CB6E2B4AF8920060B272 /* FirebaseFirestore */; };
+		53A2CB712B4AF8920060B272 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 53A2CB702B4AF8920060B272 /* FirebaseFirestoreSwift */; };
+		53A2CB742B4AF8CF0060B272 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 53A2CB732B4AF8CF0060B272 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53A2CB742B4AF8CF0060B272 /* SnapKit in Frameworks */,
+				53A2CB6F2B4AF8920060B272 /* FirebaseFirestore in Frameworks */,
+				53A2CB712B4AF8920060B272 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,7 @@
 				53A2CB522B4AF76C0060B272 /* JADATests */,
 				53A2CB5C2B4AF76C0060B272 /* JADAUITests */,
 				53A2CB3A2B4AF76B0060B272 /* Products */,
+				53A2CB6D2B4AF8920060B272 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +134,13 @@
 			path = JADAUITests;
 			sourceTree = "<group>";
 		};
+		53A2CB6D2B4AF8920060B272 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +157,11 @@
 			dependencies = (
 			);
 			name = JADA;
+			packageProductDependencies = (
+				53A2CB6E2B4AF8920060B272 /* FirebaseFirestore */,
+				53A2CB702B4AF8920060B272 /* FirebaseFirestoreSwift */,
+				53A2CB732B4AF8CF0060B272 /* SnapKit */,
+			);
 			productName = JADA;
 			productReference = 53A2CB392B4AF76B0060B272 /* JADA.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +234,10 @@
 				Base,
 			);
 			mainGroup = 53A2CB302B4AF76B0060B272;
+			packageReferences = (
+				53A2CB6C2B4AF87E0060B272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				53A2CB722B4AF8C60060B272 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 53A2CB3A2B4AF76B0060B272 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -607,6 +630,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		53A2CB6C2B4AF87E0060B272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.1;
+			};
+		};
+		53A2CB722B4AF8C60060B272 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		53A2CB6E2B4AF8920060B272 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53A2CB6C2B4AF87E0060B272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		53A2CB702B4AF8920060B272 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53A2CB6C2B4AF87E0060B272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		53A2CB732B4AF8CF0060B272 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53A2CB722B4AF8C60060B272 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 53A2CB312B4AF76B0060B272 /* Project object */;
 }
