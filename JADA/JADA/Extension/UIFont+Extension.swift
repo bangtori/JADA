@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIFont {
-    /// size: 20 (bold)
+    /// size: 24 (bold)
     static var jadaLargeTitleFont: UIFont {
         return UIFont.systemFont(ofSize: 24, weight: .bold)
     }

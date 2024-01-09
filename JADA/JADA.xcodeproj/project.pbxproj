@@ -35,6 +35,7 @@
 		53A2CB9E2B4D1DB80060B272 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */; };
 		53A2CBA02B4D1DFD0060B272 /* CustomTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB9F2B4D1DFD0060B272 /* CustomTransitionAnimator.swift */; };
 		53A2CBA22B4D2A410060B272 /* JadaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA12B4D2A410060B272 /* JadaTextView.swift */; };
+		53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		53A2CB9F2B4D1DFD0060B272 /* CustomTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionAnimator.swift; sourceTree = "<group>"; };
 		53A2CBA12B4D2A410060B272 /* JadaTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaTextView.swift; sourceTree = "<group>"; };
+		53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */,
 				53A2CB972B4D1C8C0060B272 /* TabBarController.swift */,
 				53A2CB992B4D1D800060B272 /* HomeViewController.swift */,
+				53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */,
 				53A2CB9B2B4D1DA60060B272 /* CalandarTableListController.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
 			);
@@ -382,6 +385,7 @@
 				53A2CB8A2B4BCA570060B272 /* JadaTextField.swift in Sources */,
 				53A2CB862B4B01320060B272 /* Screen.swift in Sources */,
 				53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */,
+				53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
 				53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */,
 				53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */,

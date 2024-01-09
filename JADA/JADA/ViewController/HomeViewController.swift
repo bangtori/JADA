@@ -33,6 +33,8 @@ final class HomeViewController: UIViewController {
     private let goalTextView: JadaTextView = {
         let textView = JadaTextView()
         textView.isEditable = false
+        textView.font = .jadaTitleFont
+        textView.textAlignment = .center
         return textView
     }()
     override func viewDidLoad() {
@@ -48,7 +50,11 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func tappedgoalEditButtonn(_ sender: UIButton) {
-        
+        let viewController = GoalEditView()
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.delegate = self
+        self.present(viewController, animated: true, completion: nil)
     }
     
     private func setUI() {
@@ -73,5 +79,11 @@ final class HomeViewController: UIViewController {
             make.leading.trailing.equalTo(goalDescriptionLabel)
             make.height.equalTo(80)
         }
+    }
+}
+
+extension HomeViewController: GoalEidtDelegate {
+    func saveGoal(goal: String) {
+        goalTextView.text = goal
     }
 }
