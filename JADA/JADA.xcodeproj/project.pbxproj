@@ -28,6 +28,7 @@
 		53A2CB8A2B4BCA570060B272 /* JadaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB892B4BCA570060B272 /* JadaTextField.swift */; };
 		53A2CB8C2B4BD4D90060B272 /* JadaFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB8B2B4BD4D90060B272 /* JadaFilledButton.swift */; };
 		53A2CB8E2B4BD9CB0060B272 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB8D2B4BD9CB0060B272 /* UIButton+Extensions.swift */; };
+		53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		53A2CB892B4BCA570060B272 /* JadaTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaTextField.swift; sourceTree = "<group>"; };
 		53A2CB8B2B4BD4D90060B272 /* JadaFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaFilledButton.swift; sourceTree = "<group>"; };
 		53A2CB8D2B4BD9CB0060B272 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				53A2CB402B4AF76B0060B272 /* SignInViewController.swift */,
+				53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				53A2CB862B4B01320060B272 /* Screen.swift in Sources */,
 				53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
+				53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */,
 				53A2CB812B4AFF660060B272 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,5 +23,10 @@ extension UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    func configNavigation(title: String) {
+        self.title = title
+        self.navigationController?.navigationBar.tintColor = .jadaMainGreen
+    }
 }
 

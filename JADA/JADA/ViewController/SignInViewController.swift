@@ -104,7 +104,8 @@ extension SignInViewController {
         sender.tappedAnimation()
     }
     @objc private func tappedSignUpButton(_ sender: UIButton) {
-        print("회원가입")
+        let viewController = SignUpViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     @objc private func tappedforgotFasswordButton(_ sender: UIButton) {
         print("비밀번호 찾기")
