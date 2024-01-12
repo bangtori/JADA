@@ -36,6 +36,8 @@
 		53A2CBA02B4D1DFD0060B272 /* CustomTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB9F2B4D1DFD0060B272 /* CustomTransitionAnimator.swift */; };
 		53A2CBA22B4D2A410060B272 /* JadaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA12B4D2A410060B272 /* JadaTextView.swift */; };
 		53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */; };
+		53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */; };
+		53A2CBA82B4D53E00060B272 /* JadaIconLabelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		53A2CB9F2B4D1DFD0060B272 /* CustomTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionAnimator.swift; sourceTree = "<group>"; };
 		53A2CBA12B4D2A410060B272 /* JadaTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaTextView.swift; sourceTree = "<group>"; };
 		53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditView.swift; sourceTree = "<group>"; };
+		53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListCell.swift; sourceTree = "<group>"; };
+		53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaIconLabelButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,7 @@
 				53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */,
 				53A2CB972B4D1C8C0060B272 /* TabBarController.swift */,
 				53A2CB992B4D1D800060B272 /* HomeViewController.swift */,
+				53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */,
 				53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */,
 				53A2CB9B2B4D1DA60060B272 /* CalandarTableListController.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
@@ -228,6 +233,7 @@
 				53A2CBA12B4D2A410060B272 /* JadaTextView.swift */,
 				53A2CB8B2B4BD4D90060B272 /* JadaFilledButton.swift */,
 				53A2CB9F2B4D1DFD0060B272 /* CustomTransitionAnimator.swift */,
+				53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				53A2CB7D2B4AFE1D0060B272 /* UIView+Extension.swift in Sources */,
 				53A2CB412B4AF76B0060B272 /* SignInViewController.swift in Sources */,
 				53A2CBA22B4D2A410060B272 /* JadaTextView.swift in Sources */,
+				53A2CBA82B4D53E00060B272 /* JadaIconLabelButtonView.swift in Sources */,
 				53A2CBA02B4D1DFD0060B272 /* CustomTransitionAnimator.swift in Sources */,
 				53A2CB3D2B4AF76B0060B272 /* AppDelegate.swift in Sources */,
 				53A2CB9A2B4D1D800060B272 /* HomeViewController.swift in Sources */,
@@ -388,6 +395,7 @@
 				53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
 				53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */,
+				53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */,
 				53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */,
 				53A2CB9C2B4D1DA60060B272 /* CalandarTableListController.swift in Sources */,
 				53A2CB812B4AFF660060B272 /* UIColor+Extension.swift in Sources */,

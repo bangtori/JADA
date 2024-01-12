@@ -37,12 +37,29 @@ final class HomeViewController: UIViewController {
         textView.textAlignment = .center
         return textView
     }()
+    private let tableView: UITableView = UITableView()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configNavigation(title: "Home")
         setUI()
         configButtons()
+        configTableView()
+    }
+    
+    private func configTableView() {
+        tableView.register(DiaryListCell.self, forCellReuseIdentifier: DiaryListCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderTopPadding = 0.0
     }
     
     private func configButtons() {
@@ -58,7 +75,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func setUI() {
-        view.addSubViews([goalLabel, goalEditButton, goalDescriptionLabel, goalTextView])
+        view.addSubViews([goalLabel, goalEditButton, goalDescriptionLabel, goalTextView, tableView])
         
         goalLabel.snp.makeConstraints { make in
             make.top.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
@@ -79,11 +96,47 @@ final class HomeViewController: UIViewController {
             make.leading.trailing.equalTo(goalDescriptionLabel)
             make.height.equalTo(80)
         }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(goalTextView.snp.bottom)
+            make.leading.trailing.equalTo(goalTextView)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 
 extension HomeViewController: GoalEidtDelegate {
     func saveGoal(goal: String) {
         goalTextView.text = goal
+    }
+}
+
+// MARK: - 테이블 뷰 관련
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryListCell.identifier, for: indexPath) as? DiaryListCell else {
+            return UITableViewCell()
+        }
+        cell.configData(icon: UIImage(systemName: "smiley.fill"), positivePercent: 88, dateString: "01월01일 금요일", contents: "내용 내용 내용 내용 내용 내용\n 내용 내용 내용 내용 내용 내용 내용 \n ㅇㅁㄴㅇ ㅁㄴㅇㅁㄴ ㅇㅁㄴ ㅇㅁㄴdasjknfklnflkakfmklasdmfklasmfklmasdlfmncjdsancjknadsjkcndjkascnkjn")
+        return cell
     }
 }
