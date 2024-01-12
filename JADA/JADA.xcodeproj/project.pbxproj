@@ -38,6 +38,8 @@
 		53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */; };
 		53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */; };
 		53A2CBA82B4D53E00060B272 /* JadaIconLabelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */; };
+		53A2CBAA2B511BCC0060B272 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA92B511BCC0060B272 /* AddViewController.swift */; };
+		53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBAB2B51204D0060B272 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditView.swift; sourceTree = "<group>"; };
 		53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListCell.swift; sourceTree = "<group>"; };
 		53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaIconLabelButtonView.swift; sourceTree = "<group>"; };
+		53A2CBA92B511BCC0060B272 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		53A2CBAB2B51204D0060B272 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,7 @@
 				53A2CB7E2B4AFE300060B272 /* UIFont+Extension.swift */,
 				53A2CB802B4AFF660060B272 /* UIColor+Extension.swift */,
 				53A2CB8D2B4BD9CB0060B272 /* UIButton+Extensions.swift */,
+				53A2CBAB2B51204D0060B272 /* Date+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 				53A2CB992B4D1D800060B272 /* HomeViewController.swift */,
 				53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */,
 				53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */,
+				53A2CBA92B511BCC0060B272 /* AddViewController.swift */,
 				53A2CB9B2B4D1DA60060B272 /* CalandarTableListController.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
 			);
@@ -389,11 +395,13 @@
 				53A2CB9A2B4D1D800060B272 /* HomeViewController.swift in Sources */,
 				53A2CB3F2B4AF76B0060B272 /* SceneDelegate.swift in Sources */,
 				53A2CB8C2B4BD4D90060B272 /* JadaFilledButton.swift in Sources */,
+				53A2CBAA2B511BCC0060B272 /* AddViewController.swift in Sources */,
 				53A2CB8A2B4BCA570060B272 /* JadaTextField.swift in Sources */,
 				53A2CB862B4B01320060B272 /* Screen.swift in Sources */,
 				53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */,
 				53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
+				53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */,
 				53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */,
 				53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */,
 				53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */,

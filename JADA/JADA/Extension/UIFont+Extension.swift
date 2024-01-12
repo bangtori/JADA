@@ -16,6 +16,10 @@ extension UIFont {
     static var jadaTitleFont: UIFont {
         return UIFont.systemFont(ofSize: 20, weight: .bold)
     }
+    /// size: 20 (medium)
+    static var jadaNonBoldTitleFont: UIFont {
+        return UIFont.systemFont(ofSize: 20, weight: .medium)
+    }
     /// size: 17 (medium)
     static var jadaBodyFont: UIFont {
         return UIFont.systemFont(ofSize: 17, weight: .medium)

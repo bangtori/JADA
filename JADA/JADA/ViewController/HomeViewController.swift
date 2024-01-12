@@ -51,8 +51,15 @@ final class HomeViewController: UIViewController {
         setUI()
         configButtons()
         configTableView()
+        configNavigationBarButton()
     }
     
+    private func configNavigationBarButton() {
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(tappedAddButton))
+        addButton.tintColor = .jadaMainGreen
+        addButton.accessibilityLabel = "일기 작성"
+        navigationItem.rightBarButtonItem = addButton
+    }
     private func configTableView() {
         tableView.register(DiaryListCell.self, forCellReuseIdentifier: DiaryListCell.identifier)
         tableView.delegate = self
@@ -63,10 +70,15 @@ final class HomeViewController: UIViewController {
     }
     
     private func configButtons() {
-        goalEditButton.addTarget(self, action: #selector(tappedgoalEditButtonn), for: .touchUpInside)
+        goalEditButton.addTarget(self, action: #selector(tappedgoalEditButton), for: .touchUpInside)
     }
     
-    @objc private func tappedgoalEditButtonn(_ sender: UIButton) {
+    @objc private func tappedAddButton(_ sender: UIBarButtonItem) {
+        let viewController = AddViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    @objc private func tappedgoalEditButton(_ sender: UIButton) {
         let viewController = GoalEditView()
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalTransitionStyle = .crossDissolve
