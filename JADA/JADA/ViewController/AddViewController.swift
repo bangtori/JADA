@@ -11,7 +11,7 @@ import SnapKit
 final class AddViewController: UIViewController {
     
     private let textViewPlaceHolder = "일기 입력"
-    
+    private var selectedDate = Date()
     private let dateView: UIView = UIView()
     private let dateLabel: UILabel = {
         let label = UILabel()
@@ -32,6 +32,7 @@ final class AddViewController: UIViewController {
         return textView
     }()
     private let saveButton: JadaFilledButton = JadaFilledButton(title: "저장", background: .jadaGray)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +47,17 @@ final class AddViewController: UIViewController {
     private func configButtons() {
         saveButton.isEnabled = false
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
+        dateEditButton.addTarget(self, action: #selector(tappedDateEditButton), for: .touchUpInside)
     }
     private func configTextView() {
         contentTextView.delegate = self
     }
     private func configData() {
-        dateLabel.text = Date().toString()
+        dateLabel.text = selectedDate.toString()
         contentTextView.text = textViewPlaceHolder
+    }
+    @objc private func tappedDateEditButton(_ sender: UIButton) {
+        showDatePicker()
     }
     @objc private func tappedSaveButton(_ sender: UIButton) {
         sender.tappedAnimation()
@@ -117,5 +122,32 @@ extension AddViewController: UITextViewDelegate {
             saveButton.isEnabled = false
             saveButton.backgroundColor = .jadaGray
         }
+    }
+}
+
+// MARK: - DatePicker 관련
+extension AddViewController {
+    private func showDatePicker() {
+        let alert = UIAlertController(title: "일기 날짜 선택", message: "", preferredStyle: .actionSheet)
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .inline
+        datePicker.date = selectedDate
+        datePicker.locale = Locale(identifier: "ko_KR")
+                
+        let ok = UIAlertAction(title: "선택 완료", style: .cancel) { [weak self] action in
+            guard let self = self else { return }
+            selectedDate = datePicker.date
+            dateLabel.text = selectedDate.toString()
+        }
+                        
+        alert.addAction(ok)
+                
+        let vc = UIViewController()
+        vc.view = datePicker
+                
+        alert.setValue(vc, forKey: "contentViewController")
+                
+        present(alert, animated: true)
     }
 }
