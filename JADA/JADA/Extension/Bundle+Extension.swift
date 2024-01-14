@@ -8,12 +8,23 @@
 import Foundation
 
 extension Bundle {
-    var apiKey: String {
+    var clientSecret: String {
         guard let file = self.path(forResource: "APIKeys", ofType: "plist") else { return "" }
         
         guard let resource = NSDictionary(contentsOfFile: file) else { return "" }
         
-        guard let key = resource["API_KEY"] as? String else {
+        guard let key = resource["Client_Secret"] as? String else {
+            fatalError("KEY를 찾을수없음")
+        }
+        return key
+    }
+    
+    var clientID: String {
+        guard let file = self.path(forResource: "APIKeys", ofType: "plist") else { return "" }
+        
+        guard let resource = NSDictionary(contentsOfFile: file) else { return "" }
+        
+        guard let key = resource["Client_ID"] as? String else {
             fatalError("KEY를 찾을수없음")
         }
         return key

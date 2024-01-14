@@ -40,6 +40,8 @@
 		53A2CBA82B4D53E00060B272 /* JadaIconLabelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */; };
 		53A2CBAA2B511BCC0060B272 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA92B511BCC0060B272 /* AddViewController.swift */; };
 		53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBAB2B51204D0060B272 /* Date+Extensions.swift */; };
+		53A2CBB12B52D5B40060B272 /* ClovaApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBB02B52D5B30060B272 /* ClovaApiService.swift */; };
+		53A2CBC72B540ACA0060B272 /* SentimentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBC62B540ACA0060B272 /* SentimentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaIconLabelButtonView.swift; sourceTree = "<group>"; };
 		53A2CBA92B511BCC0060B272 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		53A2CBAB2B51204D0060B272 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		53A2CBB02B52D5B30060B272 /* ClovaApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClovaApiService.swift; sourceTree = "<group>"; };
+		53A2CBC62B540ACA0060B272 /* SentimentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 				53A2CB792B4AFDEC0060B272 /* Extension */,
 				53A2CB842B4B011F0060B272 /* Constraints */,
 				53A2CB882B4BCA290060B272 /* Common */,
+				53A2CBAF2B52D5880060B272 /* Service */,
+				53A2CBC52B540AB70060B272 /* Model */,
 				53A2CB822B4B00D00060B272 /* ViewController */,
 			);
 			path = JADA;
@@ -242,6 +248,22 @@
 				53A2CBA72B4D53E00060B272 /* JadaIconLabelButtonView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		53A2CBAF2B52D5880060B272 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				53A2CBB02B52D5B30060B272 /* ClovaApiService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		53A2CBC52B540AB70060B272 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				53A2CBC62B540ACA0060B272 /* SentimentModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,7 +417,9 @@
 				53A2CB9A2B4D1D800060B272 /* HomeViewController.swift in Sources */,
 				53A2CB3F2B4AF76B0060B272 /* SceneDelegate.swift in Sources */,
 				53A2CB8C2B4BD4D90060B272 /* JadaFilledButton.swift in Sources */,
+				53A2CBB12B52D5B40060B272 /* ClovaApiService.swift in Sources */,
 				53A2CBAA2B511BCC0060B272 /* AddViewController.swift in Sources */,
+				53A2CBC72B540ACA0060B272 /* SentimentModel.swift in Sources */,
 				53A2CB8A2B4BCA570060B272 /* JadaTextField.swift in Sources */,
 				53A2CB862B4B01320060B272 /* Screen.swift in Sources */,
 				53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */,
