@@ -42,6 +42,8 @@
 		53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBAB2B51204D0060B272 /* Date+Extensions.swift */; };
 		53A2CBB12B52D5B40060B272 /* ClovaApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBB02B52D5B30060B272 /* ClovaApiService.swift */; };
 		53A2CBC72B540ACA0060B272 /* SentimentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBC62B540ACA0060B272 /* SentimentModel.swift */; };
+		53A2CBC92B550B230060B272 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBC82B550B230060B272 /* ResultViewController.swift */; };
+		53A2CBCB2B550D7B0060B272 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBCA2B550D7B0060B272 /* Emotion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		53A2CBAB2B51204D0060B272 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		53A2CBB02B52D5B30060B272 /* ClovaApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClovaApiService.swift; sourceTree = "<group>"; };
 		53A2CBC62B540ACA0060B272 /* SentimentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentModel.swift; sourceTree = "<group>"; };
+		53A2CBC82B550B230060B272 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		53A2CBCA2B550D7B0060B272 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 				53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */,
 				53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */,
 				53A2CBA92B511BCC0060B272 /* AddViewController.swift */,
+				53A2CBC82B550B230060B272 /* ResultViewController.swift */,
 				53A2CB9B2B4D1DA60060B272 /* CalandarTableListController.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
 			);
@@ -262,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				53A2CBC62B540ACA0060B272 /* SentimentModel.swift */,
+				53A2CBCA2B550D7B0060B272 /* Emotion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,6 +438,8 @@
 				53A2CB9C2B4D1DA60060B272 /* CalandarTableListController.swift in Sources */,
 				53A2CB812B4AFF660060B272 /* UIColor+Extension.swift in Sources */,
 				53A2CB9E2B4D1DB80060B272 /* AnalyticsViewController.swift in Sources */,
+				53A2CBC92B550B230060B272 /* ResultViewController.swift in Sources */,
+				53A2CBCB2B550D7B0060B272 /* Emotion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

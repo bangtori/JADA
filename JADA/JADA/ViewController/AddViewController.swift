@@ -37,7 +37,7 @@ final class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configNavigation(title: "Add")
+        configNavigation(title: "일기 작성")
         setUI()
         configData()
         configTextView()
@@ -61,7 +61,24 @@ final class AddViewController: UIViewController {
     }
     @objc private func tappedSaveButton(_ sender: UIButton) {
         sender.tappedAnimation()
-        print("저장")
+        let apiSevice = ClovaApiService()
+        apiSevice.fetchData(text: contentTextView.text) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                print(data)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    let viewController = ResultViewController(sentiment: data, date: selectedDate)
+                    viewController.hideNavigationBackButton()
+                    navigationController?.pushViewController(viewController, animated: true)
+                }
+            case .failure(_):
+                showAlert(message: "감정 분석에 실패하였습니다.",title: "데이터 저장 실패") {
+                    return
+                }
+            }
+        }
     }
     private func setUI(){
         view.addSubViews([dateView, contentTextView, saveButton])

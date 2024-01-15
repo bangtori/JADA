@@ -49,6 +49,7 @@ final class JadaIconLabelButtonView: UIView {
         label.snp.makeConstraints { make in
             make.top.bottom.centerY.equalTo(iconImageView)
             make.leading.equalTo(iconImageView.snp.trailing).offset(5)
+            make.trailing.equalToSuperview()
         }
     }
 }

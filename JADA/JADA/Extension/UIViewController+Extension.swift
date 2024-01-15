@@ -24,9 +24,16 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    /// 네비게이션 타이틀 기본 설정
     func configNavigation(title: String) {
         self.title = title
         self.navigationController?.navigationBar.tintColor = .jadaMainGreen
+    }
+    
+    /// 네비게이션 뒤로가기 버튼 숨기기
+    /// -> 사용방법: a에서 b로 이동한다면 a에서 선언
+    func hideNavigationBackButton() {
+        self.navigationItem.hidesBackButton = true
     }
 }
 

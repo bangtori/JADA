@@ -15,7 +15,7 @@ final class ClovaApiService {
         case httpRequestError
     }
     
-    func fetchData(text: String, completion: @escaping (Result<Any, Error>) -> Void) {
+    func fetchData(text: String, completion: @escaping (Result<SentimentModel, Error>) -> Void) {
         guard let request = requestApi(content: text) else { return }
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {

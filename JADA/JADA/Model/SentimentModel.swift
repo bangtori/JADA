@@ -22,6 +22,10 @@ struct Document: Codable {
 // MARK: - Confidence
 struct Confidence: Codable {
     let neutral, positive, negative: Double
+    var maxPercent: Int {
+        let max = max(negative, neutral, positive)
+        return Int(max)
+    }
 }
 
 // MARK: - Sentence
