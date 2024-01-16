@@ -8,8 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol JadaTextFieldDelegate: AnyObject {
+    func validate(_ sender: JadaTextField)
+}
+
 final class JadaTextField: UIView {
     private var maxLength: Int
+    weak var delegate: JadaTextFieldDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -17,7 +22,7 @@ final class JadaTextField: UIView {
         label.textColor = .jadaGray
         return label
     }()
-    private let textField: UITextField = {
+    let textField: UITextField = {
         let textField = UITextField()
         return textField
     }()
@@ -97,6 +102,7 @@ extension JadaTextField: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         removeButton.isHidden = true
         lineView.backgroundColor = .jadaGray
+        delegate?.validate(self)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

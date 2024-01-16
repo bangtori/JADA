@@ -47,6 +47,7 @@
 		53A2CBCE2B553C490060B272 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 53A2CBCD2B553C490060B272 /* FSCalendar */; };
 		53A2CBD02B5640D20060B272 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBCF2B5640D20060B272 /* CalendarCell.swift */; };
 		53A2CBD22B564E0D0060B272 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */; };
+		53A2CBD42B5681DD0060B272 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD32B5681DD0060B272 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		53A2CBCA2B550D7B0060B272 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		53A2CBCF2B5640D20060B272 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		53A2CBD32B5681DD0060B272 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,7 @@
 			children = (
 				53A2CBC62B540ACA0060B272 /* SentimentModel.swift */,
 				53A2CBCA2B550D7B0060B272 /* Emotion.swift */,
+				53A2CBD32B5681DD0060B272 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				53A2CB8E2B4BD9CB0060B272 /* UIButton+Extensions.swift in Sources */,
 				53A2CB7D2B4AFE1D0060B272 /* UIView+Extension.swift in Sources */,
 				53A2CB412B4AF76B0060B272 /* SignInViewController.swift in Sources */,
+				53A2CBD42B5681DD0060B272 /* User.swift in Sources */,
 				53A2CBA22B4D2A410060B272 /* JadaTextView.swift in Sources */,
 				53A2CBA82B4D53E00060B272 /* JadaIconLabelButtonView.swift in Sources */,
 				53A2CBD02B5640D20060B272 /* CalendarCell.swift in Sources */,

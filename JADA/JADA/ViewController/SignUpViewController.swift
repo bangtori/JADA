@@ -27,7 +27,7 @@ final class SignUpViewController: UIViewController {
         label.isHidden = true
         return label
     }()
-    private let passwordCheckTextField: JadaTextField = JadaTextField(label: "Password", isSecure: true)
+    private let passwordCheckTextField: JadaTextField = JadaTextField(label: "Password Check", isSecure: true)
     private let passwordCheckWarningLabel: UILabel = {
         let label = UILabel()
         label.text = "비밀번호와 일치하지 않습니다."
@@ -45,8 +45,17 @@ final class SignUpViewController: UIViewController {
         configNavigation(title: "회원가입")
         setUI()
         configButtons()
+        configTextField()
     }
-
+    
+    private func configTextField() {
+        emailTextField.delegate = self
+        emailTextField.tag = 1
+        passwordTextField.delegate = self
+        passwordTextField.tag = 2
+        passwordCheckTextField.delegate = self
+        passwordCheckTextField.tag = 3
+    }
     private func configButtons() {
         signUpButton.addTarget(self, action: #selector(tappedSignUpButton), for: .touchUpInside)
     }
@@ -102,6 +111,64 @@ final class SignUpViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
             make.leading.trailing.equalTo(nicknameTextField)
             make.height.equalTo(50)
+        }
+    }
+}
+
+extension SignUpViewController: JadaTextFieldDelegate {
+    func validate(_ sender: JadaTextField) {
+        switch sender.tag {
+        case 1:
+            emailWarningLabel.isHidden = false
+            if checkEmail() {
+                emailWarningLabel.text = "good"
+                emailWarningLabel.textColor = .jadaMainGreen
+            } else {
+                emailWarningLabel.text = "Email 형식을 지켜주세요."
+                emailWarningLabel.textColor = .jadaDangerRed
+            }
+        case 2:
+            passwordWarningLabel.isHidden = false
+            if checkPassword() {
+                passwordWarningLabel.text = "good"
+                passwordWarningLabel.textColor = .jadaMainGreen
+            } else {
+                passwordWarningLabel.text = "8자 이상 영문 + 숫자 조합으로 입력해주세요."
+                passwordWarningLabel.textColor = .jadaDangerRed
+            }
+        case 3:
+            passwordCheckWarningLabel.isHidden = false
+            if checkPasswordCheck() {
+                passwordCheckWarningLabel.text = "good"
+                passwordCheckWarningLabel.textColor = .jadaMainGreen
+            } else {
+                passwordCheckWarningLabel.text = "비밀번호와 일치하지 않습니다."
+                passwordCheckWarningLabel.textColor = .jadaDangerRed
+            }
+        default:
+            break
+        }
+    }
+    
+    private func checkEmail() -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        guard let email = emailTextField.textField.text else { return false }
+        return  NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+    }
+    
+    private func checkPassword() -> Bool {
+        let passwordRegex = "^[A-Za-z0-9]{8,}$"
+        guard let password = passwordTextField.textField.text else { return false }
+        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
+    }
+    private func checkPasswordCheck() -> Bool {
+        guard let passwordCheck = passwordCheckTextField.textField.text else { return false }
+        guard let password = passwordTextField.textField.text else { return false }
+        
+        if password == passwordCheck {
+            return true
+        }else {
+            return false
         }
     }
 }
