@@ -48,6 +48,8 @@
 		53A2CBD02B5640D20060B272 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBCF2B5640D20060B272 /* CalendarCell.swift */; };
 		53A2CBD22B564E0D0060B272 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */; };
 		53A2CBD42B5681DD0060B272 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD32B5681DD0060B272 /* User.swift */; };
+		53A2CBD62B56C48A0060B272 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD52B56C48A0060B272 /* FirestoreService.swift */; };
+		53A2CBD82B56C5D70060B272 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53A2CBD72B56C5D70060B272 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		53A2CBCF2B5640D20060B272 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		53A2CBD32B5681DD0060B272 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		53A2CBD52B56C48A0060B272 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		53A2CBD72B56C5D70060B272 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,7 @@
 				53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */,
 				53A2CB452B4AF76C0060B272 /* Assets.xcassets */,
 				53A2CB472B4AF76C0060B272 /* LaunchScreen.storyboard */,
+				53A2CBD72B56C5D70060B272 /* GoogleService-Info.plist */,
 				53A2CB4A2B4AF76C0060B272 /* Info.plist */,
 				53A2CB752B4AFC9A0060B272 /* APIKeys.plist */,
 			);
@@ -269,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				53A2CBB02B52D5B30060B272 /* ClovaApiService.swift */,
+				53A2CBD52B56C48A0060B272 /* FirestoreService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53A2CB762B4AFC9A0060B272 /* APIKeys.plist in Resources */,
+				53A2CBD82B56C5D70060B272 /* GoogleService-Info.plist in Resources */,
 				53A2CB492B4AF76C0060B272 /* LaunchScreen.storyboard in Resources */,
 				53A2CB462B4AF76C0060B272 /* Assets.xcassets in Resources */,
 			);
@@ -446,6 +453,7 @@
 				53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */,
 				53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
+				53A2CBD62B56C48A0060B272 /* FirestoreService.swift in Sources */,
 				53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */,
 				53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */,
 				53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */,
