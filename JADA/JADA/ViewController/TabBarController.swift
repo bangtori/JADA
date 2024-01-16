@@ -17,7 +17,7 @@ final class TabBarController: UITabBarController {
     
     private func configTabBar() {
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        let calendarViewController = UINavigationController(rootViewController: CalandarTableListController())
+        let calendarViewController = UINavigationController(rootViewController: CalendarTableListController())
         let analyticsViewController = UINavigationController(rootViewController: AnalyticsViewController())
         
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house.fill"), tag: 0)

@@ -31,7 +31,7 @@
 		53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */; };
 		53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB972B4D1C8C0060B272 /* TabBarController.swift */; };
 		53A2CB9A2B4D1D800060B272 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB992B4D1D800060B272 /* HomeViewController.swift */; };
-		53A2CB9C2B4D1DA60060B272 /* CalandarTableListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB9B2B4D1DA60060B272 /* CalandarTableListController.swift */; };
+		53A2CB9C2B4D1DA60060B272 /* CalendarTableListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB9B2B4D1DA60060B272 /* CalendarTableListController.swift */; };
 		53A2CB9E2B4D1DB80060B272 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */; };
 		53A2CBA02B4D1DFD0060B272 /* CustomTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB9F2B4D1DFD0060B272 /* CustomTransitionAnimator.swift */; };
 		53A2CBA22B4D2A410060B272 /* JadaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBA12B4D2A410060B272 /* JadaTextView.swift */; };
@@ -45,6 +45,8 @@
 		53A2CBC92B550B230060B272 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBC82B550B230060B272 /* ResultViewController.swift */; };
 		53A2CBCB2B550D7B0060B272 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBCA2B550D7B0060B272 /* Emotion.swift */; };
 		53A2CBCE2B553C490060B272 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 53A2CBCD2B553C490060B272 /* FSCalendar */; };
+		53A2CBD02B5640D20060B272 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBCF2B5640D20060B272 /* CalendarCell.swift */; };
+		53A2CBD22B564E0D0060B272 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +92,7 @@
 		53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		53A2CB972B4D1C8C0060B272 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		53A2CB992B4D1D800060B272 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		53A2CB9B2B4D1DA60060B272 /* CalandarTableListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalandarTableListController.swift; sourceTree = "<group>"; };
+		53A2CB9B2B4D1DA60060B272 /* CalendarTableListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableListController.swift; sourceTree = "<group>"; };
 		53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		53A2CB9F2B4D1DFD0060B272 /* CustomTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionAnimator.swift; sourceTree = "<group>"; };
 		53A2CBA12B4D2A410060B272 /* JadaTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JadaTextView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,8 @@
 		53A2CBC62B540ACA0060B272 /* SentimentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentModel.swift; sourceTree = "<group>"; };
 		53A2CBC82B550B230060B272 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		53A2CBCA2B550D7B0060B272 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
+		53A2CBCF2B5640D20060B272 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +222,9 @@
 				53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */,
 				53A2CBA92B511BCC0060B272 /* AddViewController.swift */,
 				53A2CBC82B550B230060B272 /* ResultViewController.swift */,
-				53A2CB9B2B4D1DA60060B272 /* CalandarTableListController.swift */,
+				53A2CB9B2B4D1DA60060B272 /* CalendarTableListController.swift */,
+				53A2CBCF2B5640D20060B272 /* CalendarCell.swift */,
+				53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
 			);
 			path = ViewController;
@@ -422,6 +428,7 @@
 				53A2CB412B4AF76B0060B272 /* SignInViewController.swift in Sources */,
 				53A2CBA22B4D2A410060B272 /* JadaTextView.swift in Sources */,
 				53A2CBA82B4D53E00060B272 /* JadaIconLabelButtonView.swift in Sources */,
+				53A2CBD02B5640D20060B272 /* CalendarCell.swift in Sources */,
 				53A2CBA02B4D1DFD0060B272 /* CustomTransitionAnimator.swift in Sources */,
 				53A2CB3D2B4AF76B0060B272 /* AppDelegate.swift in Sources */,
 				53A2CB9A2B4D1D800060B272 /* HomeViewController.swift in Sources */,
@@ -438,8 +445,9 @@
 				53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */,
 				53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */,
 				53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */,
+				53A2CBD22B564E0D0060B272 /* CalendarTableViewCell.swift in Sources */,
 				53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */,
-				53A2CB9C2B4D1DA60060B272 /* CalandarTableListController.swift in Sources */,
+				53A2CB9C2B4D1DA60060B272 /* CalendarTableListController.swift in Sources */,
 				53A2CB812B4AFF660060B272 /* UIColor+Extension.swift in Sources */,
 				53A2CB9E2B4D1DB80060B272 /* AnalyticsViewController.swift in Sources */,
 				53A2CBC92B550B230060B272 /* ResultViewController.swift in Sources */,
