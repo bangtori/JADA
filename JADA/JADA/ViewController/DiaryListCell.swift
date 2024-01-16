@@ -23,7 +23,7 @@ final class DiaryListCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private let positivePercentLabel: UILabel = {
+    private let conditionLabel: UILabel = {
         let label = UILabel()
         label.font = .jadaCalloutFont
         label.textColor = .black
@@ -64,16 +64,17 @@ final class DiaryListCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
-        positivePercentLabel.text = ""
+        conditionLabel.text = ""
         dateLabel.text = ""
         contentsLabel.text = ""
     }
     
-    func configData(icon: UIImage?, positivePercent: Int, dateString: String, contents: String) {
-        iconImageView.image = icon
-        positivePercentLabel.text = "\(positivePercent)%"
-        dateLabel.text = dateString
-        contentsLabel.text = contents
+    func configData() {
+        // MARK: - 모델 정리 후 수정 필요
+        iconImageView.image = UIImage(named: "neutral")
+        conditionLabel.text = "soso"
+        dateLabel.text = "01월 01일 금요일"
+        contentsLabel.text = "내용 내용 내용 내용 내용 내용\n 내용 내용 내용 내용 내용 내용 내용 \n ㅇㅁㄴㅇ ㅁㄴㅇㅁㄴ ㅇㅁㄴ ㅇㅁㄴdasjknfklnflkakfmklasdmfklasmfklmasdlfmncjdsancjknadsjkcndjkascnkjn"
     }
     
     private func configButtons() {
@@ -93,7 +94,7 @@ final class DiaryListCell: UITableViewCell {
     
     private func setUI() {
         contentView.addSubview(background)
-        background.addSubViews([iconImageView, positivePercentLabel, dateLabel, contentsLabel, lineView, editButton, deleteButton])
+        background.addSubViews([iconImageView, conditionLabel, dateLabel, contentsLabel, lineView, editButton, deleteButton])
         background.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
@@ -101,7 +102,7 @@ final class DiaryListCell: UITableViewCell {
             make.top.leading.equalToSuperview().offset(15)
             make.width.height.equalTo(50)
         }
-        positivePercentLabel.snp.makeConstraints { make in
+        conditionLabel.snp.makeConstraints { make in
             make.top.equalTo(iconImageView.snp.bottom).offset(5)
             make.leading.trailing.equalTo(iconImageView)
         }
@@ -113,7 +114,7 @@ final class DiaryListCell: UITableViewCell {
         }
         
         contentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(positivePercentLabel.snp.bottom).offset(10)
+            make.top.equalTo(conditionLabel.snp.bottom).offset(10)
             make.leading.equalTo(iconImageView)
             make.trailing.equalTo(dateLabel)
             make.height.equalTo(contentsLabel.font.pointSize * 3 + 10)

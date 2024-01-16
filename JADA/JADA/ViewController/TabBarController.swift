@@ -22,7 +22,7 @@ final class TabBarController: UITabBarController {
         
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house.fill"), tag: 0)
         calendarViewController.tabBarItem = UITabBarItem(title: "채팅", image: UIImage(systemName: "calendar"), tag: 1)
-        analyticsViewController.tabBarItem = UITabBarItem(title: "좋아요", image: UIImage(systemName: "chart.pie"), tag: 2)
+        analyticsViewController.tabBarItem = UITabBarItem(title: "통계", image: UIImage(systemName: "chart.pie"), tag: 2)
         
         
         homeViewController.navigationBar.prefersLargeTitles = false

@@ -148,7 +148,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryListCell.identifier, for: indexPath) as? DiaryListCell else {
             return UITableViewCell()
         }
-        cell.configData(icon: UIImage(systemName: "smiley.fill"), positivePercent: 88, dateString: "01월01일 금요일", contents: "내용 내용 내용 내용 내용 내용\n 내용 내용 내용 내용 내용 내용 내용 \n ㅇㅁㄴㅇ ㅁㄴㅇㅁㄴ ㅇㅁㄴ ㅇㅁㄴdasjknfklnflkakfmklasdmfklasmfklmasdlfmncjdsancjknadsjkcndjkascnkjn")
+        cell.configData()
         return cell
     }
 }
