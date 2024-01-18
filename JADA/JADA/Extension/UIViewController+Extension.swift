@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     /// 알림창 띄우기
-    func showAlert(message: String, title: String = "알림", isCancelButton: Bool = false, yesButtonTitle: String = "확인", yesAction: (() -> Void)?) {
+    func showAlert(message: String, title: String = "알림", isCancelButton: Bool = false, yesButtonTitle: String = "확인", yesAction: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let yes = UIAlertAction(title: yesButtonTitle, style: .default) { _ in
             yesAction?()

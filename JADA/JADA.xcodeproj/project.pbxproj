@@ -50,6 +50,7 @@
 		53A2CBD42B5681DD0060B272 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD32B5681DD0060B272 /* User.swift */; };
 		53A2CBD62B56C48A0060B272 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD52B56C48A0060B272 /* FirestoreService.swift */; };
 		53A2CBD82B56C5D70060B272 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53A2CBD72B56C5D70060B272 /* GoogleService-Info.plist */; };
+		53A2CBDA2B56CAD90060B272 /* SignUpSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CBD92B56CAD90060B272 /* SignUpSuccessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		53A2CBD32B5681DD0060B272 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		53A2CBD52B56C48A0060B272 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		53A2CBD72B56C5D70060B272 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		53A2CBD92B56CAD90060B272 /* SignUpSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSuccessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 			children = (
 				53A2CB402B4AF76B0060B272 /* SignInViewController.swift */,
 				53A2CB8F2B4C00240060B272 /* SignUpViewController.swift */,
+				53A2CBD92B56CAD90060B272 /* SignUpSuccessViewController.swift */,
 				53A2CB972B4D1C8C0060B272 /* TabBarController.swift */,
 				53A2CB992B4D1D800060B272 /* HomeViewController.swift */,
 				53A2CBA52B4D3C380060B272 /* DiaryListCell.swift */,
@@ -454,6 +457,7 @@
 				53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
 				53A2CBD62B56C48A0060B272 /* FirestoreService.swift in Sources */,
+				53A2CBDA2B56CAD90060B272 /* SignUpSuccessViewController.swift in Sources */,
 				53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */,
 				53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */,
 				53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */,

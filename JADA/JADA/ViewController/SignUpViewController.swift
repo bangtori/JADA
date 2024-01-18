@@ -62,7 +62,42 @@ final class SignUpViewController: UIViewController {
     
     @objc private func tappedSignUpButton(_ sender: UIButton) {
         sender.tappedAnimation()
-        print("회원가입")
+        guard let email = emailTextField.textField.text else { return }
+        guard let password = passwordTextField.textField.text else { return }
+        guard let nickname = nicknameTextField.textField.text else { return }
+        if checkEmail() && checkPassword() && checkPasswordCheck() {
+            FirestoreService.shared.searchDocumentWithEqualField(collectionId: .users, field: "email", compareWith: email, dataType: User.self) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let data):
+                    if data.isEmpty {
+                        let newUser = User(email: email, password: password, nickname: nickname, postCount: 0, positiveCount: 0)
+                        FirestoreService.shared.saveDocument(collectionId: .users, documentId: newUser.id, data: newUser) { [weak self] result in
+                            guard let self = self else { return }
+                            switch result {
+                            case .success(_):
+                                DispatchQueue.main.async { [weak self] in
+                                    guard let self = self else { return }
+                                    let viewController = SignUpSuccessViewController()
+                                    viewController.hideNavigationBackButton()
+                                    navigationController?.pushViewController(viewController, animated: true)
+                                }
+                            case .failure(let error):
+                                print(error)
+                                showAlert(message: "회원가입에 문제가 생겼습니다. 다시 시도해주세요.", title: "회원가입 실패")
+                            }
+                        }
+                    } else {
+                        showAlert(message: "이미 가입한 회원입니다.", title: "가입한 회원")
+                    }
+                case .failure(let error):
+                    print(error)
+                    showAlert(message: "회원가입에 문제가 생겼습니다. 다시 시도해주세요.", title: "회원가입 실패")
+                }
+            }
+        } else {
+            showAlert(message: "양식에 맞게 작성해주세요", title: "회원가입 실패")
+        }
     }
     private func setUI() {
         view.addSubViews([emailTextField, emailWarningLabel, passwordTextField, passwordWarningLabel, passwordCheckTextField, passwordCheckWarningLabel, nicknameTextField, signUpButton])
