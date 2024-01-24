@@ -20,7 +20,7 @@ final class SignInViewController: UIViewController {
         let label = UILabel()
         label.font = .jadaCalloutFont
         label.textColor = .jadaDangerRed
-        label.text = "ss"
+        label.isHidden = true
         return label
     }()
     private let signInButton: JadaFilledButton = JadaFilledButton(title: "로그인")
@@ -102,6 +102,13 @@ final class SignInViewController: UIViewController {
 extension SignInViewController {
     @objc private func tappedSignInButton(_ sender: UIButton) {
         sender.tappedAnimation()
+        if validate() {
+            fetailDescription.isHidden = true
+            
+        } else {
+            fetailDescription.isHidden = false
+            fetailDescription.text = "이메일 형식을 지켜주세요."
+        }
     }
     @objc private func tappedSignUpButton(_ sender: UIButton) {
         let viewController = SignUpViewController()
@@ -109,5 +116,11 @@ extension SignInViewController {
     }
     @objc private func tappedforgotFasswordButton(_ sender: UIButton) {
         print("비밀번호 찾기")
+    }
+    
+    private func validate() -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        guard let email = emailTextField.textField.text else { return false }
+        return  NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 }

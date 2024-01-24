@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 final class SignUpViewController: UIViewController {
     private let emailTextField: JadaTextField = JadaTextField(label: "Email")
@@ -66,35 +67,35 @@ final class SignUpViewController: UIViewController {
         guard let password = passwordTextField.textField.text else { return }
         guard let nickname = nicknameTextField.textField.text else { return }
         if checkEmail() && checkPassword() && checkPasswordCheck() {
-            FirestoreService.shared.searchDocumentWithEqualField(collectionId: .users, field: "email", compareWith: email, dataType: User.self) { [weak self] result in
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
                 guard let self = self else { return }
-                switch result {
-                case .success(let data):
-                    if data.isEmpty {
-                        let newUser = User(email: email, password: password, nickname: nickname, postCount: 0, positiveCount: 0)
-                        FirestoreService.shared.saveDocument(collectionId: .users, documentId: newUser.id, data: newUser) { [weak self] result in
-                            guard let self = self else { return }
-                            switch result {
-                            case .success(_):
-                                DispatchQueue.main.async { [weak self] in
-                                    guard let self = self else { return }
-                                    let viewController = SignUpSuccessViewController()
-                                    viewController.hideNavigationBackButton()
-                                    navigationController?.pushViewController(viewController, animated: true)
-                                }
-                            case .failure(let error):
-                                print(error)
-                                showAlert(message: "회원가입에 문제가 생겼습니다. 다시 시도해주세요.", title: "회원가입 실패")
-                            }
-                        }
+                if let error = error as? NSError {
+                    if error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
+                        print("Error: Auth createUser 오류 - 이미 가입한 이메일")
+                        showAlert(message: "이미 가입한 이메일입니다.", title: "회원가입 실패")
                     } else {
-                        showAlert(message: "이미 가입한 회원입니다.", title: "가입한 회원")
+                        print("Error: Auth createUser 오류 - 알 수 없음")
+                        showAlert(message: "회원가입에 문제가 생겼습니다. 다시 시도해주세요.", title: "회원가입 실패")
                     }
-                case .failure(let error):
-                    print(error)
-                    showAlert(message: "회원가입에 문제가 생겼습니다. 다시 시도해주세요.", title: "회원가입 실패")
+                }
+                let newUser = User(email: email, password: password, nickname: nickname, postCount: 0, positiveCount: 0)
+                FirestoreService.shared.saveDocument(collectionId: .users, documentId: newUser.id, data: newUser) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(_):
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self = self else { return }
+                            let viewController = SignUpSuccessViewController()
+                            viewController.hideNavigationBackButton()
+                            navigationController?.pushViewController(viewController, animated: true)
+                        }
+                    case .failure(let error):
+                        print(error)
+                        showAlert(message: "회원가입에 문제가 생겼습니다. 다시 시도해주세요.", title: "회원가입 실패")
+                    }
                 }
             }
+            
         } else {
             showAlert(message: "양식에 맞게 작성해주세요", title: "회원가입 실패")
         }

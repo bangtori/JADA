@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		532B8D742B58FBAB00E1E524 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532B8D732B58FBAB00E1E524 /* FirebaseAuth */; };
 		53A2CB3D2B4AF76B0060B272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB3C2B4AF76B0060B272 /* AppDelegate.swift */; };
 		53A2CB3F2B4AF76B0060B272 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */; };
 		53A2CB412B4AF76B0060B272 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB402B4AF76B0060B272 /* SignInViewController.swift */; };
@@ -123,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53A2CB742B4AF8CF0060B272 /* SnapKit in Frameworks */,
+				532B8D742B58FBAB00E1E524 /* FirebaseAuth in Frameworks */,
 				53A2CBCE2B553C490060B272 /* FSCalendar in Frameworks */,
 				53A2CB6F2B4AF8920060B272 /* FirebaseFirestore in Frameworks */,
 				53A2CB712B4AF8920060B272 /* FirebaseFirestoreSwift in Frameworks */,
@@ -313,6 +315,7 @@
 				53A2CB702B4AF8920060B272 /* FirebaseFirestoreSwift */,
 				53A2CB732B4AF8CF0060B272 /* SnapKit */,
 				53A2CBCD2B553C490060B272 /* FSCalendar */,
+				532B8D732B58FBAB00E1E524 /* FirebaseAuth */,
 			);
 			productName = JADA;
 			productReference = 53A2CB392B4AF76B0060B272 /* JADA.app */;
@@ -833,6 +836,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		532B8D732B58FBAB00E1E524 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53A2CB6C2B4AF87E0060B272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		53A2CB6E2B4AF8920060B272 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 53A2CB6C2B4AF87E0060B272 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
