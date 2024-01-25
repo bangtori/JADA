@@ -60,4 +60,8 @@ final class UserDefaultsService {
             UserDefaults.standard.removeObject(forKey: $0.rawValue)
         }
     }
+    
+    func isLogin() -> Bool {
+        UserDefaults.standard.string(forKey: Key.userId.rawValue) == nil ? false : true
+    }
 }

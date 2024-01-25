@@ -11,13 +11,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
-//        window?.rootViewController = TabBarController()
+        DispatchQueue.main.async {  [weak self] in
+            guard let self else { return }
+            if UserDefaultsService.shared.isLogin() {
+                window?.rootViewController = TabBarController()
+            } else {
+                UserDefaultsService.shared.removeAll()
+                window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+            }
+        }
         window?.makeKeyAndVisible()
     }
     
