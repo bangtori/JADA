@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		532B8D742B58FBAB00E1E524 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532B8D732B58FBAB00E1E524 /* FirebaseAuth */; };
 		538535372B6102B100EAE7EE /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538535362B6102B100EAE7EE /* UserDefaultsService.swift */; };
+		538535392B62261000EAE7EE /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538535382B62261000EAE7EE /* Diary.swift */; };
 		53A2CB3D2B4AF76B0060B272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB3C2B4AF76B0060B272 /* AppDelegate.swift */; };
 		53A2CB3F2B4AF76B0060B272 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */; };
 		53A2CB412B4AF76B0060B272 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB402B4AF76B0060B272 /* SignInViewController.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		538535362B6102B100EAE7EE /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		538535382B62261000EAE7EE /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		53A2CB392B4AF76B0060B272 /* JADA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JADA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A2CB3C2B4AF76B0060B272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				53A2CBC62B540ACA0060B272 /* SentimentModel.swift */,
 				53A2CBCA2B550D7B0060B272 /* Emotion.swift */,
 				53A2CBD32B5681DD0060B272 /* User.swift */,
+				538535382B62261000EAE7EE /* Diary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				53A2CB862B4B01320060B272 /* Screen.swift in Sources */,
 				53A2CB7B2B4AFE050060B272 /* UIViewController+Extension.swift in Sources */,
 				53A2CBA42B4D2D5C0060B272 /* GoalEditView.swift in Sources */,
+				538535392B62261000EAE7EE /* Diary.swift in Sources */,
 				53A2CB782B4AFD540060B272 /* Bundle+Extension.swift in Sources */,
 				53A2CBD62B56C48A0060B272 /* FirestoreService.swift in Sources */,
 				53A2CBDA2B56CAD90060B272 /* SignUpSuccessViewController.swift in Sources */,

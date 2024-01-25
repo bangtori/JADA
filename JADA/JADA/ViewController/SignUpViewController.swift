@@ -79,7 +79,7 @@ final class SignUpViewController: UIViewController {
                     }
                 }
                 guard let userId = userResult?.user.uid else { return }
-                let newUser = User(id: userId, email: email, password: password, nickname: nickname, postCount: 0, positiveCount: 0)
+                let newUser = User(id: userId, email: email, password: password, nickname: nickname, postCount: 0, positiveCount: 0, goal: "")
                 FirestoreService.shared.saveDocument(collectionId: .users, documentId: newUser.id, data: newUser) { [weak self] result in
                     guard let self = self else { return }
                     switch result {

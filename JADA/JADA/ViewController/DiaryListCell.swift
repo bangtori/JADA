@@ -69,12 +69,12 @@ final class DiaryListCell: UITableViewCell {
         contentsLabel.text = ""
     }
     
-    func configData() {
+    func configData(diary: Diary) {
         // MARK: - 모델 정리 후 수정 필요
-        iconImageView.image = UIImage(named: "neutral")
-        conditionLabel.text = "soso"
-        dateLabel.text = "01월 01일 금요일"
-        contentsLabel.text = "내용 내용 내용 내용 내용 내용\n 내용 내용 내용 내용 내용 내용 내용 \n ㅇㅁㄴㅇ ㅁㄴㅇㅁㄴ ㅇㅁㄴ ㅇㅁㄴdasjknfklnflkakfmklasdmfklasmfklmasdlfmncjdsancjknadsjkcndjkascnkjn"
+        iconImageView.image = UIImage(named: diary.emotion.rawValue)
+        conditionLabel.text = diary.emotion.cellText
+        dateLabel.text = Date(timeIntervalSince1970: diary.createdDate).toString()
+        contentsLabel.text = diary.contents
     }
     
     private func configButtons() {

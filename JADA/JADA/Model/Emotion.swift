@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Emotion: String {
+enum Emotion: String, Codable {
     case positive
     case neutral
     case negative
@@ -23,4 +23,14 @@ enum Emotion: String {
         }
     }
     
+    var cellText: String {
+        switch self {
+        case .positive:
+            return "Good"
+        case .neutral:
+            return "soso"
+        case .negative:
+            return "Bad"
+        }
+    }
 }

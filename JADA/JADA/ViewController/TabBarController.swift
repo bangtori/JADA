@@ -16,7 +16,15 @@ final class TabBarController: UITabBarController {
     }
     
     private func configTabBar() {
-        let homeViewController = UINavigationController(rootViewController: HomeViewController())
+        guard let userId = UserDefaultsService.shared.getData(key: .userId) as? String else {
+            print("Error: UserDefaults UserId 가져오기 실패")
+            showAlert(message: "유저정보를 가져오는데 실패했습니다. 다시 로그인해주세요.", title: "유저 정보 가져오기 실패") {
+                UserDefaultsService.shared.removeAll()
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootView(SignInViewController(), animated: true)
+            }
+            return
+        }
+        let homeViewController = UINavigationController(rootViewController: HomeViewController(userId: userId))
         let calendarViewController = UINavigationController(rootViewController: CalendarTableListController())
         let analyticsViewController = UINavigationController(rootViewController: AnalyticsViewController())
         

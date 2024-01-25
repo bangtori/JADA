@@ -62,16 +62,41 @@ final class AddViewController: UIViewController {
     @objc private func tappedSaveButton(_ sender: UIButton) {
         sender.tappedAnimation()
         let apiSevice = ClovaApiService()
+        guard let contents = contentTextView.text else { return }
         apiSevice.fetchData(text: contentTextView.text) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                print(data)
-                DispatchQueue.main.async { [weak self] in
+                guard let userId = UserDefaultsService.shared.getData(key: .userId) as? String else {
+                    print("Error: UserDefaults UserId 가져오기 실패")
+                    showAlert(message: "유저정보를 가져오는데 실패했습니다. 다시 로그인해주세요.", title: "유저 정보 가져오기 실패") {
+                        UserDefaultsService.shared.removeAll()
+                        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootView(SignInViewController(), animated: true)
+                    }
+                    return
+                }
+                guard let emotion = getEmotion(resultString: data.document.sentiment) else {
+                    print("Error: 데이터 변환 실패")
+                    showAlert(message: "감정 데이터 변환에 실패하였습니다. 다시 시도해주세요.", title: "데이터 변환 실패")
+                    return
+                }
+                let newDiary = Diary(writerId: userId, contents: contents, emotion: emotion)
+                FirestoreService.shared.saveDocument(collectionId: .diary, documentId: newDiary.id, data: newDiary) { [weak self] result in
                     guard let self = self else { return }
-                    let viewController = ResultViewController(sentiment: data, date: selectedDate)
-                    viewController.hideNavigationBackButton()
-                    navigationController?.pushViewController(viewController, animated: true)
+                    switch result {
+                    case .success(_):
+                        updateCountData(emotion: emotion, userId: userId)
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self = self else { return }
+                            let viewController = ResultViewController(sentiment: data, date: selectedDate)
+                            viewController.hideNavigationBackButton()
+                            navigationController?.pushViewController(viewController, animated: true)
+                        }
+                    case .failure(let error):
+                        print("Error: 데이터 저장 실패")
+                        showAlert(message: "데이터 저장에 실패하였습니다. 다시 시도해주세요.\n\(error)", title: "데이터 저장 실패")
+                        return
+                    }
                 }
             case .failure(_):
                 showAlert(message: "감정 분석에 실패하였습니다.",title: "데이터 저장 실패") {
@@ -80,6 +105,27 @@ final class AddViewController: UIViewController {
             }
         }
     }
+    
+    private func updateCountData(emotion: Emotion, userId: String) {
+        UserDefaultsService.shared.updatePost(postResult: emotion)
+        FirestoreService.shared.updateDocument(collectionId: .users, documentId: userId, field: "postCount", data: UserDefaultsService.shared.getData(key: .postCount) as? Int) { _ in }
+        if emotion == .positive {
+            FirestoreService.shared.updateDocument(collectionId: .users, documentId: userId, field: "positiveCount", data: UserDefaultsService.shared.getData(key: .positiveCount) as? Int) { _ in }
+        }
+    }
+    private func getEmotion(resultString: String) -> Emotion? {
+        switch resultString {
+        case "positive":
+            return .positive
+        case "neutral":
+            return .neutral
+        case "negative":
+            return .negative
+        default:
+            return nil
+        }
+    }
+    
     private func setUI(){
         view.addSubViews([dateView, contentTextView, saveButton])
         dateView.addSubViews([dateLabel, dateEditButton])

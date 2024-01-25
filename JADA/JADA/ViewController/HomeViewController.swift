@@ -9,6 +9,13 @@ import UIKit
 import SnapKit
 
 final class HomeViewController: UIViewController {
+    private var diaryList: [Diary] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    private var uid: String
+    
     private let goalLabel: UILabel = {
         let label = UILabel()
         label.text = "이번 목표"
@@ -39,9 +46,19 @@ final class HomeViewController: UIViewController {
     }()
     private let tableView: UITableView = UITableView()
     
+    init(userId: String) {
+        uid = userId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        loadData()
     }
     
     override func viewDidLoad() {
@@ -52,6 +69,21 @@ final class HomeViewController: UIViewController {
         configButtons()
         configTableView()
         configNavigationBarButton()
+    }
+    
+    private func loadData() {
+        let goal = UserDefaultsService.shared.getData(key: .goal) as? String
+        goalTextView.text = (goal == nil) ? "" : goal
+        
+        FirestoreService.shared.searchDocumentWithEqualField(collectionId: .diary, field: "writerId", compareWith: uid, dataType: Diary.self) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let diary):
+                diaryList = diary
+            case .failure(let error):
+                print("Error: 다이어리 가져오기 실패 \n\(error)")
+            }
+        }
     }
     
     private func configNavigationBarButton() {
@@ -120,13 +152,22 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: GoalEidtDelegate {
     func saveGoal(goal: String) {
         goalTextView.text = goal
+        UserDefaultsService.shared.updateData(key: .goal, value: goal)
+        FirestoreService.shared.updateDocument(collectionId: .users, documentId: uid, field: "goal", data: goal) { result in
+            switch result {
+            case .success(_):
+                print("Goal 데이터 업데이트 성공")
+            case .failure(let error):
+                print("Error: Goal 데이터 업데이트 실패\n\(error)")
+            }
+        }
     }
 }
 
 // MARK: - 테이블 뷰 관련
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return diaryList.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -148,7 +189,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DiaryListCell.identifier, for: indexPath) as? DiaryListCell else {
             return UITableViewCell()
         }
-        cell.configData()
+        cell.configData(diary: diaryList[indexPath.section])
         return cell
     }
 }

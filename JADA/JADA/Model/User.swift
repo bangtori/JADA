@@ -14,4 +14,5 @@ struct User: Codable {
     let nickname: String
     let postCount: Int
     let positiveCount: Int
+    let goal: String
 }

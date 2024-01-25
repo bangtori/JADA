@@ -10,6 +10,7 @@ import Foundation
 final class UserDefaultsService {
     enum Key: String, CaseIterable {
         case userId, email, password, nickName
+        case goal
         case postCount, positiveCount
     }
     static let shared: UserDefaultsService = UserDefaultsService()
@@ -20,11 +21,12 @@ final class UserDefaultsService {
         UserDefaults.standard.setValue(user.password, forKey: Key.password.rawValue)
         UserDefaults.standard.setValue(user.postCount, forKey: Key.postCount.rawValue)
         UserDefaults.standard.setValue(user.positiveCount, forKey: Key.positiveCount.rawValue)
+        UserDefaults.standard.setValue(user.goal, forKey: Key.goal.rawValue)
     }
     
     func getData(key: Key) -> Any? {
         switch key {
-        case .userId, .email, .password, .nickName:
+        case .userId, .email, .password, .nickName, .goal:
             return UserDefaults.standard.string(forKey: key.rawValue)
         case .postCount, .positiveCount:
             return UserDefaults.standard.integer(forKey: key.rawValue)
@@ -44,6 +46,8 @@ final class UserDefaultsService {
         switch key {
         case .userId, .email:
             break
+        case .goal:
+            UserDefaults.standard.setValue(value, forKey: Key.goal.rawValue)
         case .password:
             UserDefaults.standard.setValue(value, forKey: Key.password.rawValue)
         case .nickName:

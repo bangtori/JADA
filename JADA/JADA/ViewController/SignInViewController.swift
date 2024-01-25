@@ -119,7 +119,7 @@ extension SignInViewController {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
                 guard let self = self else { return }
                 if let error = error {
-                    print("Error: auth 로그인 실패")
+                    print("Error: auth 로그인 실패\n\(error)")
                     showAlert(message: "로그인에 실패하였습니다. 다시 시도해주세요.", title: "로그인 실패")
                     return
                 }
