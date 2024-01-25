@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 final class SignInViewController: UIViewController {
     private let logoImage: UIImageView = {
@@ -44,6 +45,15 @@ final class SignInViewController: UIViewController {
         view.backgroundColor = .white
         setUI()
         configButtons()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeAllTextField()
+    }
+    
+    private func removeAllTextField() {
+        emailTextField.textField.text = ""
+        passwordTextField.textField.text = ""
     }
     
     private func configButtons() {
@@ -104,7 +114,35 @@ extension SignInViewController {
         sender.tappedAnimation()
         if validate() {
             fetailDescription.isHidden = true
-            
+            guard let email = emailTextField.textField.text else { return }
+            guard let password = passwordTextField.textField.text else { return }
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+                guard let self = self else { return }
+                if let error = error {
+                    print("Error: auth 로그인 실패")
+                    showAlert(message: "로그인에 실패하였습니다. 다시 시도해주세요.", title: "로그인 실패")
+                    return
+                }
+                guard let userId = result?.user.uid else { return }
+                FirestoreService.shared.loadDocument(collectionId: .users, documentId: userId, dataType: User.self) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let user):
+                        if let user = user {
+                            UserDefaultsService.shared.saveUserData(user: user)
+                            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootView(TabBarController(), animated: true)
+                        } else {
+                            print("Error: 회원 정보 불러오기 실패\nuser = nil")
+                            showAlert(message: "로그인에 실패하였습니다. 다시 시도해주세요.", title: "로그인 실패")
+                        }
+                    case .failure(let error):
+                        print("Error: 회원 정보 불러오기 실패\n\(error)")
+                        showAlert(message: "로그인에 실패하였습니다. 다시 시도해주세요.", title: "로그인 실패")
+                        return
+                    }
+                }
+                
+            }
         } else {
             fetailDescription.isHidden = false
             fetailDescription.text = "이메일 형식을 지켜주세요."

@@ -67,7 +67,7 @@ final class SignUpViewController: UIViewController {
         guard let password = passwordTextField.textField.text else { return }
         guard let nickname = nicknameTextField.textField.text else { return }
         if checkEmail() && checkPassword() && checkPasswordCheck() {
-            Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] userResult, error in
                 guard let self = self else { return }
                 if let error = error as? NSError {
                     if error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
@@ -78,7 +78,8 @@ final class SignUpViewController: UIViewController {
                         showAlert(message: "회원가입에 문제가 생겼습니다. 다시 시도해주세요.", title: "회원가입 실패")
                     }
                 }
-                let newUser = User(email: email, password: password, nickname: nickname, postCount: 0, positiveCount: 0)
+                guard let userId = userResult?.user.uid else { return }
+                let newUser = User(id: userId, email: email, password: password, nickname: nickname, postCount: 0, positiveCount: 0)
                 FirestoreService.shared.saveDocument(collectionId: .users, documentId: newUser.id, data: newUser) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
