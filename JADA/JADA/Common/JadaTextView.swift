@@ -8,18 +8,45 @@
 import UIKit
 import SnapKit
 
-final class JadaTextView: UITextView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
+final class JadaTextView: UIView {
+    let textview: UITextView = UITextView()
+    let topBorder: UIView = {
+        let view = UIView()
+        view.backgroundColor = .jadaDarkGreen
+        return view
+    }()
+    let bottomBorder: UIView = {
+        let view = UIView()
+        view.backgroundColor = .jadaDarkGreen
+        return view
+    }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUI() {
+        addSubViews([topBorder, textview, bottomBorder])
         
-        let borderLayer = CALayer()
-        borderLayer.backgroundColor = UIColor.jadaDarkGreen.cgColor
-        borderLayer.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: 2)
-        layer.addSublayer(borderLayer)
+        topBorder.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(2)
+        }
         
-        let bottomBorderLayer = CALayer()
-        bottomBorderLayer.backgroundColor = UIColor.jadaDarkGreen.cgColor
-        bottomBorderLayer.frame = CGRect(x: 0, y: bounds.size.height - 2, width: bounds.size.width, height: 2)
-        layer.addSublayer(bottomBorderLayer)
+        textview.snp.makeConstraints { make in
+            make.top.equalTo(topBorder.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        bottomBorder.snp.makeConstraints { make in
+            make.top.equalTo(textview.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(2)
+        }
     }
 }

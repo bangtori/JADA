@@ -26,10 +26,11 @@ final class AddViewController: UIViewController {
         return button
     }()
     private let contentTextView: JadaTextView = {
-        let textView = JadaTextView()
-        textView.font = .jadaNonBoldTitleFont
-        textView.textColor = .lightGray
-        return textView
+        let jdTextView = JadaTextView()
+        let textview = jdTextView.textview
+        textview.font = .jadaNonBoldTitleFont
+        textview.textColor = .lightGray
+        return jdTextView
     }()
     private let saveButton: JadaFilledButton = JadaFilledButton(title: "저장", background: .jadaGray)
 
@@ -50,11 +51,11 @@ final class AddViewController: UIViewController {
         dateEditButton.addTarget(self, action: #selector(tappedDateEditButton), for: .touchUpInside)
     }
     private func configTextView() {
-        contentTextView.delegate = self
+        contentTextView.textview.delegate = self
     }
     private func configData() {
         dateLabel.text = selectedDate.toString()
-        contentTextView.text = textViewPlaceHolder
+        contentTextView.textview.text = textViewPlaceHolder
     }
     @objc private func tappedDateEditButton(_ sender: UIButton) {
         showDatePicker()
@@ -62,8 +63,8 @@ final class AddViewController: UIViewController {
     @objc private func tappedSaveButton(_ sender: UIButton) {
         sender.tappedAnimation()
         let apiSevice = ClovaApiService()
-        guard let contents = contentTextView.text else { return }
-        apiSevice.fetchData(text: contentTextView.text) { [weak self] result in
+        guard let contents = contentTextView.textview.text else { return }
+        apiSevice.fetchData(text: contentTextView.textview.text) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -178,7 +179,7 @@ extension AddViewController: UITextViewDelegate {
     }
     
     private func checkIsEnableButton() {
-        if !contentTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && contentTextView.text != textViewPlaceHolder {
+        if !contentTextView.textview.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && contentTextView.textview.text != textViewPlaceHolder {
             saveButton.isEnabled = true
             saveButton.backgroundColor = .jadaMainGreen
         } else {

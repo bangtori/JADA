@@ -38,11 +38,12 @@ final class HomeViewController: UIViewController {
         return label
     }()
     private let goalTextView: JadaTextView = {
-        let textView = JadaTextView()
-        textView.isEditable = false
-        textView.font = .jadaTitleFont
-        textView.textAlignment = .center
-        return textView
+        let jdTextView = JadaTextView()
+        let textview = jdTextView.textview
+        textview.isEditable = false
+        textview.font = .jadaTitleFont
+        textview.textAlignment = .center
+        return jdTextView
     }()
     private let tableView: UITableView = UITableView()
     
@@ -73,7 +74,7 @@ final class HomeViewController: UIViewController {
     
     private func loadData() {
         let goal = UserDefaultsService.shared.getData(key: .goal) as? String
-        goalTextView.text = (goal == nil) ? "" : goal
+        goalTextView.textview.text = (goal == nil) ? "" : goal
         
         FirestoreService.shared.searchDocumentWithEqualField(collectionId: .diary, field: "writerId", compareWith: uid, dataType: Diary.self) { [weak self] result in
             guard let self = self else { return }
@@ -151,7 +152,7 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: GoalEidtDelegate {
     func saveGoal(goal: String) {
-        goalTextView.text = goal
+        goalTextView.textview.text = goal
         UserDefaultsService.shared.updateData(key: .goal, value: goal)
         FirestoreService.shared.updateDocument(collectionId: .users, documentId: uid, field: "goal", data: goal) { result in
             switch result {

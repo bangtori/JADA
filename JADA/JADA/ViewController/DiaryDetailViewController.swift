@@ -22,12 +22,13 @@ final class DiaryDetailViewController: UIViewController {
         return label
     }()
     private let contentTextView: JadaTextView = {
-        let textView = JadaTextView()
-        textView.backgroundColor = .jadaNoteBackground
-        textView.font = .jadaNonBoldTitleFont
-        textView.textColor = .black
-        textView.isEditable = false
-        return textView
+        let jdTextView = JadaTextView()
+        let textview = jdTextView.textview
+        textview.backgroundColor = .jadaNoteBackground
+        textview.font = .jadaNonBoldTitleFont
+        textview.textColor = .black
+        textview.isEditable = false
+        return jdTextView
     }()
     private let buttonView: UIView = UIView()
     private let editButton: JadaFilledButton = JadaFilledButton(title: "수정", background: .jadaMainGreen)
@@ -54,7 +55,7 @@ final class DiaryDetailViewController: UIViewController {
     private func setData() {
         iconImageView.image = UIImage(named: diary.emotion.rawValue)
         dateLabel.text = Date(timeIntervalSince1970: diary.createdDate).toString()
-        contentTextView.text = diary.contents
+        contentTextView.textview.text = diary.contents
     }
     
     private func setUI() {
