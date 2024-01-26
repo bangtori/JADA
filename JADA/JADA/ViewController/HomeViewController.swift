@@ -192,4 +192,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configData(diary: diaryList[indexPath.section])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let diary = diaryList[indexPath.section]
+        let viewController = DiaryDetailViewController(diary: diary)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

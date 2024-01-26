@@ -10,6 +10,7 @@
 		532B8D742B58FBAB00E1E524 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532B8D732B58FBAB00E1E524 /* FirebaseAuth */; };
 		538535372B6102B100EAE7EE /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538535362B6102B100EAE7EE /* UserDefaultsService.swift */; };
 		538535392B62261000EAE7EE /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538535382B62261000EAE7EE /* Diary.swift */; };
+		538940072B637192009ACFEA /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538940062B637192009ACFEA /* DiaryDetailViewController.swift */; };
 		53A2CB3D2B4AF76B0060B272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB3C2B4AF76B0060B272 /* AppDelegate.swift */; };
 		53A2CB3F2B4AF76B0060B272 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */; };
 		53A2CB412B4AF76B0060B272 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A2CB402B4AF76B0060B272 /* SignInViewController.swift */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		538535362B6102B100EAE7EE /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		538535382B62261000EAE7EE /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		538940062B637192009ACFEA /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
 		53A2CB392B4AF76B0060B272 /* JADA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JADA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A2CB3C2B4AF76B0060B272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53A2CB3E2B4AF76B0060B272 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				53A2CBCF2B5640D20060B272 /* CalendarCell.swift */,
 				53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
+				538940062B637192009ACFEA /* DiaryDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				538535372B6102B100EAE7EE /* UserDefaultsService.swift in Sources */,
+				538940072B637192009ACFEA /* DiaryDetailViewController.swift in Sources */,
 				53A2CB7F2B4AFE300060B272 /* UIFont+Extension.swift in Sources */,
 				53A2CB8E2B4BD9CB0060B272 /* UIButton+Extensions.swift in Sources */,
 				53A2CB7D2B4AFE1D0060B272 /* UIView+Extension.swift in Sources */,
