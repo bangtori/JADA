@@ -191,6 +191,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.configData(diary: diaryList[indexPath.section])
+        cell.delegate = self
         return cell
     }
     
@@ -198,5 +199,34 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let diary = diaryList[indexPath.section]
         let viewController = DiaryDetailViewController(diary: diary)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - Cell Delegate Button Event
+extension HomeViewController: DiaryTableViewCellDelegate {
+    func editButtonTapped(cell: DiaryListCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let viewController = AddViewController(diary: diaryList[indexPath.section])
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    func deleteButtonTapped(cell: DiaryListCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let diary = diaryList[indexPath.section]
+            showAlert(message: "\(Date(timeIntervalSince1970: diary.createdDate).toString()) 일기를 삭제합니다.", title: "일기 삭제", isCancelButton: true, yesButtonTitle: "삭제") {
+                FirestoreService.shared.deleteDocument(collectionId: .diary, documentId: diary.id) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(_):
+                        print("\(diaryList[indexPath.section].id) 삭제 성공")
+                        diaryList.remove(at: indexPath.section)
+                    case .failure(let error):
+                        print("Error: 데이터 삭제 실패\n\(error)")
+                        showAlert(message: "해당 일기를 삭제하는데 실패하였습니다. 다시 시도해주세요. \n오류가 계속될 시 문의해주세요.", title: "삭제 실패")
+                    }
+                }
+            }
+        }
     }
 }

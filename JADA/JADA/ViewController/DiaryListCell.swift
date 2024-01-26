@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol DiaryTableViewCellDelegate: AnyObject {
+    func editButtonTapped(cell: DiaryListCell)
+    func deleteButtonTapped(cell: DiaryListCell)
+}
+
 final class DiaryListCell: UITableViewCell {
     static let identifier: String = "DiaryCell"
+    weak var delegate: DiaryTableViewCellDelegate?
     
     private let background: UIView = {
         let view = UIView()
@@ -70,7 +76,6 @@ final class DiaryListCell: UITableViewCell {
     }
     
     func configData(diary: Diary) {
-        // MARK: - 모델 정리 후 수정 필요
         iconImageView.image = UIImage(named: diary.emotion.rawValue)
         conditionLabel.text = diary.emotion.cellText
         dateLabel.text = Date(timeIntervalSince1970: diary.createdDate).toString()
@@ -86,10 +91,10 @@ final class DiaryListCell: UITableViewCell {
     }
     
     @objc private func tappedEditButton(sender: UITapGestureRecognizer) {
-        print("editbuttton")
+        delegate?.editButtonTapped(cell: self)
     }
     @objc private func tappedDeleteButton(sender: UITapGestureRecognizer) {
-        print("deletebuttton")
+        delegate?.deleteButtonTapped(cell: self)
     }
     
     private func setUI() {
