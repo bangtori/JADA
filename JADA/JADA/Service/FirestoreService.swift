@@ -64,11 +64,11 @@ final class FirestoreService {
         }
     }
     
-    func searchDocumentWithEqualField<T: Codable>(collectionId: Collections, field: String, compareWith: Any, dataType: T.Type, isCreateDateOrder: Bool = true, completion: @escaping (Result<[T], Error>) -> Void) {
+    func searchDocumentWithEqualField<T: Codable>(collectionId: Collections, field: String, compareWith: Any, dataType: T.Type, isDateOrder: Bool = true, completion: @escaping (Result<[T], Error>) -> Void) {
         DispatchQueue.global().async {
             var query = self.dbRef.collection(collectionId.name).whereField(field, isEqualTo: compareWith)
-            if isCreateDateOrder {
-                query = query.order(by: "createdDate", descending: true)
+            if isDateOrder {
+                query = query.order(by: "date", descending: true).order(by: "createdDate", descending: true)
             }
             query.getDocuments { (querySnapshot, error) in
                 if let error = error {

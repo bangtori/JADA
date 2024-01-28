@@ -78,7 +78,7 @@ final class DiaryListCell: UITableViewCell {
     func configData(diary: Diary) {
         iconImageView.image = UIImage(named: diary.emotion.rawValue)
         conditionLabel.text = diary.emotion.cellText
-        dateLabel.text = Date(timeIntervalSince1970: diary.createdDate).toString()
+        dateLabel.text = Date(timeIntervalSince1970: diary.date).toString()
         contentsLabel.text = diary.contents
     }
     

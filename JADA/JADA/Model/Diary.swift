@@ -10,6 +10,7 @@ import Foundation
 struct Diary: Codable {
     var id: String = UUID().uuidString
     var createdDate: Double = Date().timeIntervalSince1970
+    let date: Double
     let writerId: String
     let contents: String
     let emotion: Emotion

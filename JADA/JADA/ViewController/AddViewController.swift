@@ -65,7 +65,7 @@ final class AddViewController: UIViewController {
     }
     private func configData() {
         if let diary = diary {
-            dateLabel.text = Date(timeIntervalSince1970: diary.createdDate).toString()
+            dateLabel.text = Date(timeIntervalSince1970: diary.date).toString()
             contentTextView.textview.text = diary.contents
             contentTextView.textview.textColor = .black
         } else {
@@ -119,7 +119,7 @@ final class AddViewController: UIViewController {
             showAlert(message: "감정 데이터 변환에 실패하였습니다. 다시 시도해주세요.", title: "데이터 변환 실패")
             return
         }
-        let newDiary = Diary(writerId: userId, contents: contents, emotion: emotion)
+        let newDiary = Diary(date: selectedDate.timeIntervalSince1970, writerId: userId, contents: contents, emotion: emotion)
         FirestoreService.shared.saveDocument(collectionId: .diary, documentId: newDiary.id, data: newDiary) { [weak self] result in
             guard let self = self else { return }
             switch result {
