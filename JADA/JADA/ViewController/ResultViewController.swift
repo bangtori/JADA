@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 
 final class ResultViewController: UIViewController {
-    private let date: Date
+    private let isDetail: Bool
     private let sentiment: SentimentModel
+    private let diary: Diary
     private let contentsView: UIView = UIView()
     private let dateLabel: UILabel = {
         let label = UILabel()
@@ -42,9 +43,10 @@ final class ResultViewController: UIViewController {
     private let galleryButton = JadaIconLabelButtonView(label: "사진 앱에 저장", icon: UIImage(systemName: "camera.on.rectangle"), iconSize: 45, font: .jadaCalloutFont)
     private let instagramButton = JadaIconLabelButtonView(label: "인스타그램 공유", icon: UIImage(named: "instagram"), iconSize: 30, font: .jadaCalloutFont)
     
-    init(sentiment: SentimentModel, date: Date) {
+    init(sentiment: SentimentModel, diary: Diary, isDetail: Bool) {
+        self.isDetail = isDetail
         self.sentiment = sentiment
-        self.date = date
+        self.diary = diary
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -63,35 +65,45 @@ final class ResultViewController: UIViewController {
     }
     
     private func configNavigationBarButton() {
-        let homeButton = UIBarButtonItem(title: "홈으로", style: .done, target: self, action: #selector(tappedHomeButton))
-        homeButton.tintColor = .jadaMainGreen
-        homeButton.accessibilityLabel = "홈으로 이동"
-        navigationItem.rightBarButtonItem = homeButton
+        if isDetail {
+            let backButton = UIBarButtonItem(title: "디테일로", style: .done, target: self, action: #selector(tappedBarButton))
+            backButton.tintColor = .jadaMainGreen
+            backButton.accessibilityLabel = "디테일뷰로 이동"
+            navigationItem.rightBarButtonItem = backButton
+        } else {
+            let homeButton = UIBarButtonItem(title: "홈으로", style: .done, target: self, action: #selector(tappedBarButton))
+            homeButton.tintColor = .jadaMainGreen
+            homeButton.accessibilityLabel = "홈으로 이동"
+            navigationItem.rightBarButtonItem = homeButton
+        }
     }
-    @objc private func tappedHomeButton(_ sender: UIBarButtonItem) {
-        if let navigationController = self.navigationController {
-            navigationController.popToRootViewController(animated: true)
+    
+    @objc private func tappedBarButton(_ sender: UIBarButtonItem) {
+        if isDetail {
+            NotificationCenter.default.post(name: NSNotification.Name("DetailDismissed"), object: diary)
+            guard let viewControllers = navigationController?.viewControllers else { return }
+            
+            if viewControllers.count >= 3 {
+                let destinationViewController = viewControllers[viewControllers.count - 3]
+                navigationController?.popToViewController(destinationViewController, animated: true)
+            }
+        } else {
+            navigationController?.popToRootViewController(animated: true)
         }
     }
     private func configData() {
-        dateLabel.text = date.toString()
-        var result: Emotion
+        dateLabel.text = Date(timeIntervalSince1970: diary.date).toString()
         var resultLabelText = ""
-        switch sentiment.document.sentiment {
-        case "positive":
-            result = .positive
+        switch diary.emotion {
+        case .positive:
             resultLabelText = "긍정 "
-        case "negative":
-            result = .negative
+        case .negative:
             resultLabelText = "부정 "
-        case "neutral":
-            result = .neutral
+        case .neutral:
             resultLabelText = "중립 "
-        default:
-            result = .neutral
         }
-        iconImageView.image = UIImage(named: result.rawValue)
-        descriptionLabel.text = result.resultDescription
+        iconImageView.image = UIImage(named: diary.emotion.rawValue)
+        descriptionLabel.text = diary.emotion.resultDescription
         resultLabelText += "\(sentiment.document.confidence.maxPercent)%"
         resultLabel.text = resultLabelText
     }

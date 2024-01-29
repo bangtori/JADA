@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class DiaryDetailViewController: UIViewController {
-    private let diary: Diary
+    private var diary: Diary
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -39,7 +39,9 @@ final class DiaryDetailViewController: UIViewController {
         view.backgroundColor = .jadaNoteBackground
         configNavigation(title: "일기 Detail")
         setUI()
-        setData()
+        configData()
+        configButtons()
+        configNotificationCenter()
     }
     
     init(diary: Diary) {
@@ -52,7 +54,50 @@ final class DiaryDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setData() {
+    private func editData(diary: Diary) {
+        self.diary = diary
+        configData()
+        
+        view.layoutIfNeeded()
+    }
+    
+    private func configNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDetailDismissed), name: NSNotification.Name("DetailDismissed"), object: nil)
+    }
+    
+    @objc private func handleDetailDismissed(_ notification: Notification) {
+        if let data = notification.object as? Diary {
+            editData(diary: data)
+        }
+    }
+    
+    private func configButtons() {
+        editButton.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(tappedDeleteButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedEditButton(_ sender: UIButton) {
+        let viewController = AddViewController(diary: diary, isDetail: true)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    @objc private func tappedDeleteButton(_ sender: UIButton) {
+        showAlert(message: "\(Date(timeIntervalSince1970: diary.createdDate).toString()) 일기를 삭제합니다.", title: "일기 삭제", isCancelButton: true, yesButtonTitle: "삭제") { [weak self] in
+            guard let self = self else { return }
+            FirestoreService.shared.deleteDocument(collectionId: .diary, documentId: diary.id) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(_):
+                    print("\(diary.id) 삭제 성공")
+                    navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    print("Error: 데이터 삭제 실패\n\(error)")
+                    showAlert(message: "해당 일기를 삭제하는데 실패하였습니다. 다시 시도해주세요. \n오류가 계속될 시 문의해주세요.", title: "삭제 실패")
+                }
+            }
+        }
+    }
+    
+    private func configData() {
         iconImageView.image = UIImage(named: diary.emotion.rawValue)
         dateLabel.text = Date(timeIntervalSince1970: diary.createdDate).toString()
         contentTextView.textview.text = diary.contents

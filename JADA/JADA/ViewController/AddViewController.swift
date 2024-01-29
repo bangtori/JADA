@@ -10,6 +10,7 @@ import SnapKit
 
 final class AddViewController: UIViewController {
     private let diary: Diary?
+    private let isDetail: Bool
     
     private let textViewPlaceHolder = "일기 입력"
     private var selectedDate = Date()
@@ -35,8 +36,9 @@ final class AddViewController: UIViewController {
     }()
     private let saveButton: JadaFilledButton = JadaFilledButton(title: "저장", background: .jadaGray)
 
-    init(diary: Diary? = nil) {
+    init(diary: Diary? = nil, isDetail: Bool = false) {
         self.diary = diary
+        self.isDetail = isDetail
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -127,7 +129,7 @@ final class AddViewController: UIViewController {
                 updateCountData(emotion: emotion, userId: userId)
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    let viewController = ResultViewController(sentiment: data, date: selectedDate)
+                    let viewController = ResultViewController(sentiment: data, diary: newDiary, isDetail: isDetail)
                     viewController.hideNavigationBackButton()
                     navigationController?.pushViewController(viewController, animated: true)
                 }
