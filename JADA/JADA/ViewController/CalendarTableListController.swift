@@ -203,8 +203,9 @@ extension CalendarTableListController: FSCalendarDelegate, FSCalendarDataSource,
 
 extension CalendarTableListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 80
-        }
+        return 80
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedData.count
     }
@@ -215,5 +216,11 @@ extension CalendarTableListController: UITableViewDelegate, UITableViewDataSourc
         }
         cell.configData(diary: selectedData[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let diary = selectedData[indexPath.row]
+        let viewController = DiaryDetailViewController(diary: diary)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
