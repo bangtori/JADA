@@ -38,11 +38,10 @@ final class CalendarTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configData() {
-        // MARK: - 일기 데이터 설정 후 수정 필요
-        iconImageView.image = UIImage(named: "positive")
-        dateLabel.text = "01월 01일 금요일"
-        contentsLabel.text = "내용 내용 내용 내용 내용 내용\n 내용 내용 내용 내용 내용 내용 내용 \n ㅇㅁㄴㅇ ㅁㄴㅇㅁㄴ ㅇㅁㄴ ㅇㅁㄴdasjknfklnflkakfmklasdmfklasmfklmasdlfmncjdsancjknadsjkcndjkascnkjn"
+    func configData(diary: Diary) {
+        iconImageView.image = UIImage(named: diary.emotion.rawValue)
+        dateLabel.text = Date(timeIntervalSince1970: diary.date).toString()
+        contentsLabel.text = diary.contents
     }
     
     private func setUI() {

@@ -38,8 +38,13 @@ final class CalendarCell: FSCalendarCell {
         
         iconImageView.image = nil
     }
-    func configData(emotion: Emotion) {
-        iconImageView.image = UIImage(named: emotion.rawValue)
+    func configData(emotion: Emotion?) {
+        if let emotion = emotion {
+            iconImageView.image = UIImage(named: emotion.rawValue)
+        } else {
+            iconImageView.image = UIImage(named: "non")
+        }
+        
     }
     private func minSize() -> CGFloat {
         let width = contentView.bounds.width - 5
