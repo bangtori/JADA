@@ -46,6 +46,7 @@ final class DiaryListCell: UITableViewCell {
         let label = UILabel()
         label.font = .jadaBodyFont
         label.textColor = .black
+        label.numberOfLines = 0
         return label
     }()
     private let lineView: UIView = {

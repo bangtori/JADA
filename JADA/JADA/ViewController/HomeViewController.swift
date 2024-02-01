@@ -7,8 +7,14 @@
 
 import UIKit
 import SnapKit
+import FirebaseFirestore
 
 final class HomeViewController: UIViewController {
+    private var lastDocumentSnapshot: DocumentSnapshot?
+    private let footerView = FooterView()
+    private let refreshControl = UIRefreshControl()
+    private var isRefresh = false
+    
     private var diaryList: [Diary] = [] {
         didSet {
             tableView.reloadData()
@@ -70,19 +76,45 @@ final class HomeViewController: UIViewController {
         configButtons()
         configTableView()
         configNavigationBarButton()
+        configRefresh()
+        
     }
     
     private func loadData() {
+        let itemsPerPage: Int = 10
         let goal = UserDefaultsService.shared.getData(key: .goal) as? String
         goalTextView.textview.text = (goal == nil) ? "" : goal
         
-        FirestoreService.shared.searchDocumentWithEqualField(collectionId: .diary, field: "writerId", compareWith: uid, dataType: Diary.self) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let diary):
-                diaryList = diary
-            case .failure(let error):
-                print("Error: 다이어리 가져오기 실패 \n\(error)")
+        var query = Firestore.firestore().collection(Collections.diary.name)
+            .whereField("writerId", isEqualTo: uid)
+            .order(by: "date", descending: true)
+            .order(by: "createdDate", descending: true)
+            .limit(to: itemsPerPage)
+        
+        if let lastSnapshot = lastDocumentSnapshot {
+            query = query.start(afterDocument: lastSnapshot)
+        }
+        
+        DispatchQueue.global().async {
+            query.getDocuments { [weak self] snapshot, error in
+                guard let self = self else { return }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                guard let documents = snapshot?.documents else { return }
+                
+                if documents.isEmpty {
+                    return
+                }
+                
+                lastDocumentSnapshot = documents.last
+                
+                for document in documents {
+                    if let data = try? document.data(as: Diary.self) {
+                        diaryList.append(data)
+                    }
+                }
             }
         }
     }
@@ -95,6 +127,7 @@ final class HomeViewController: UIViewController {
     }
     private func configTableView() {
         tableView.register(DiaryListCell.self, forCellReuseIdentifier: DiaryListCell.identifier)
+        footerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 80)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -104,6 +137,24 @@ final class HomeViewController: UIViewController {
     
     private func configButtons() {
         goalEditButton.addTarget(self, action: #selector(tappedgoalEditButton), for: .touchUpInside)
+    }
+    
+    private func configRefresh() {
+        refreshControl.addTarget(self, action: #selector(refreshTable(refresh:)), for: .valueChanged)
+        refreshControl.tintColor = .jadaMainGreen
+        tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshTable(refresh: UIRefreshControl) {
+        isRefresh = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else { return }
+            diaryList = []
+            lastDocumentSnapshot = nil
+            loadData()
+            refresh.endRefreshing()
+            isRefresh = false
+        }
     }
     
     @objc private func tappedAddButton(_ sender: UIBarButtonItem) {
@@ -231,3 +282,50 @@ extension HomeViewController: DiaryTableViewCellDelegate {
         }
     }
 }
+
+// MARK: - 페이징
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let contentOffsetY = scrollView.contentOffset.y
+        let tableViewContentSizeY = tableView.contentSize.height
+        
+        if contentOffsetY > tableViewContentSizeY - scrollView.frame.size.height && !isRefresh {
+            
+            tableView.tableFooterView = footerView
+            
+            loadData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.tableView.tableFooterView = nil
+            }
+        }
+    }
+}
+
+final class FooterView: UIView {
+    let indicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.color = .jadaMainGreen
+        return indicator
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        makeConstraints()
+        indicatorView.startAnimating()
+    }
+    
+    private func makeConstraints() {
+        addSubview(indicatorView)
+        indicatorView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
+

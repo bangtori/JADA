@@ -122,42 +122,6 @@ final class FirestoreService {
         }
     }
     
-    func loadDocuments<T: Codable>(collectionId: Collections, dataType: T.Type, orderBy: (String, Bool), itemsPerPage: Int, lastDocumentSnapshot: DocumentSnapshot?, completion: @escaping (Result<([T], DocumentSnapshot?), Error>) -> Void) {
-        var lastDocumentSnapshot = lastDocumentSnapshot
-        
-        let query = dbRef.collection(collectionId.name)
-            .order(by: orderBy.0, descending: orderBy.1)
-            .limit(to: itemsPerPage)
-        
-        if let lastSnapshots = lastDocumentSnapshot {
-            query.start(afterDocument: lastSnapshots)
-        }
-        
-        DispatchQueue.global().async {
-            query.getDocuments { querySnapshot, error in
-                if let error = error {
-                    print("Error to load new document at \(collectionId.name) \(error)")
-                    completion(.failure(error))
-                    return
-                }
-                guard let documents = querySnapshot?.documents else { return }
-                guard !documents.isEmpty else { return }
-                
-                lastDocumentSnapshot = documents.last
-                
-                if let documents = querySnapshot?.documents {
-                    var result: [T] = []
-                    for document in documents {
-                        if let temp = try? document.data(as: dataType) {
-                            result.append(temp)
-                        }
-                    }
-                    completion(.success((result, lastDocumentSnapshot)))
-                }
-            }
-        }
-    }
-    
     func updateDocument<T: Codable>(collectionId: Collections, documentId: String, field: String, data: T, completion: @escaping (Result<T, Error>) -> Void) {
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
