@@ -39,6 +39,7 @@ final class CalendarTableListController: UIViewController {
     }
     
     private func loadDiaryDataForMonth(_ date: Date, completion: @escaping () -> Void) {
+        guard let userId = UserDefaultsService.shared.getData(key: .userId) as? String else { return }
         let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: date))!
         let endOfMonth = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
 
@@ -46,6 +47,7 @@ final class CalendarTableListController: UIViewController {
         let endTimestamp = endOfMonth.timeIntervalSince1970
 
         let query = Firestore.firestore().collection("diary")
+            .whereField("writerId", isEqualTo: userId)
             .whereField("date", isGreaterThanOrEqualTo: startTimestamp)
             .whereField("date", isLessThan: endTimestamp)
         
