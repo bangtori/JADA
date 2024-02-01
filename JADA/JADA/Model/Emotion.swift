@@ -5,9 +5,9 @@
 //  Created by 방유빈 on 2024/01/15.
 //
 
-import Foundation
+import UIKit
 
-enum Emotion: String, Codable {
+enum Emotion: String, Codable, CaseIterable {
     case positive
     case neutral
     case negative
@@ -31,6 +31,17 @@ enum Emotion: String, Codable {
             return "soso"
         case .negative:
             return "Bad"
+        }
+    }
+    
+    var chartColor: UIColor {
+        switch self {
+        case .positive:
+            return .jadaMainGreen
+        case .neutral:
+            return .jadaChartBlue
+        case .negative:
+            return .jadaDangerRed
         }
     }
 }

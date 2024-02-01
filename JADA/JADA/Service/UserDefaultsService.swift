@@ -17,6 +17,7 @@ final class UserDefaultsService {
     
     func saveUserData(user: User) {
         UserDefaults.standard.setValue(user.id, forKey: Key.userId.rawValue)
+        UserDefaults.standard.setValue(user.nickname, forKey: Key.nickName.rawValue)
         UserDefaults.standard.setValue(user.email, forKey: Key.email.rawValue)
         UserDefaults.standard.setValue(user.password, forKey: Key.password.rawValue)
         UserDefaults.standard.setValue(user.postCount, forKey: Key.postCount.rawValue)

@@ -24,9 +24,10 @@ extension UIColor {
     static let jadaMainGreen: UIColor = UIColor(hex: "#93C90F")
     static let jadaAlphaMainGreen: UIColor = UIColor(hex: "#93C90F", alpha: 0.5)
     static let jadaDarkGreen: UIColor = UIColor(hex: "#628709")
-    static let jadaChartOrange: UIColor = UIColor(hex: "#C9680F")
     static let jadaNoteBackground: UIColor = UIColor(hex: "ECEDE5")
     static let jadaGray: UIColor = UIColor(hex: "A1ABB2")
     static let jadaLightGray: UIColor = UIColor(hex: "#EEF2F3")
     static let jadaDangerRed: UIColor = UIColor(hex: "F83A3B")
+    static let jadaChartOrange: UIColor = UIColor(hex: "#C9680F")
+    static let jadaChartBlue: UIColor = UIColor(hex: "#0F7BC9")
 }
