@@ -88,6 +88,7 @@ final class DiaryDetailViewController: UIViewController {
                 switch result {
                 case .success(_):
                     print("\(diary.id) 삭제 성공")
+                    UserDefaultsService.shared.deletePost(deletePostEmotion: diary.emotion)
                     navigationController?.popViewController(animated: true)
                 case .failure(let error):
                     print("Error: 데이터 삭제 실패\n\(error)")

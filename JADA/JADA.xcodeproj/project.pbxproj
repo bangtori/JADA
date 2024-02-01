@@ -241,12 +241,12 @@
 				53A2CBA32B4D2D5C0060B272 /* GoalEditView.swift */,
 				53A2CBA92B511BCC0060B272 /* AddViewController.swift */,
 				53A2CBC82B550B230060B272 /* ResultViewController.swift */,
+				538940062B637192009ACFEA /* DiaryDetailViewController.swift */,
 				53A2CB9B2B4D1DA60060B272 /* CalendarTableListController.swift */,
 				53A2CBCF2B5640D20060B272 /* CalendarCell.swift */,
 				53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
 				5389401B2B690FD4009ACFEA /* MyCountingCollectionViewCell.swift */,
-				538940062B637192009ACFEA /* DiaryDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

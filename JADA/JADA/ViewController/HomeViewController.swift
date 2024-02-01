@@ -220,6 +220,7 @@ extension HomeViewController: DiaryTableViewCellDelegate {
                     switch result {
                     case .success(_):
                         print("\(diaryList[indexPath.section].id) 삭제 성공")
+                        UserDefaultsService.shared.deletePost(deletePostEmotion: diaryList[indexPath.section].emotion)
                         diaryList.remove(at: indexPath.section)
                     case .failure(let error):
                         print("Error: 데이터 삭제 실패\n\(error)")

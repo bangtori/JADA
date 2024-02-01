@@ -34,12 +34,21 @@ final class UserDefaultsService {
         }
     }
     
-    func updatePost(postResult: Emotion) {
+    func updatePost(updatePostEmotion emotion: Emotion) {
         guard let currentPostCount = getData(key: .postCount) as? Int else { return }
         guard let currentPositiveCount = getData(key: .positiveCount) as? Int else { return }
         updateData(key: .postCount, value: currentPostCount + 1)
-        if postResult == .positive {
+        if emotion == .positive {
             updateData(key: .positiveCount, value: currentPositiveCount + 1)
+        }
+    }
+    
+    func deletePost(deletePostEmotion emotion: Emotion) {
+        guard let currentPostCount = getData(key: .postCount) as? Int else { return }
+        guard let currentPositiveCount = getData(key: .positiveCount) as? Int else { return }
+        updateData(key: .postCount, value: currentPostCount - 1)
+        if emotion == .positive {
+            updateData(key: .positiveCount, value: currentPositiveCount - 1)
         }
     }
     

@@ -150,7 +150,7 @@ final class AddViewController: UIViewController {
                 UserDefaultsService.shared.updateData(key: .postCount, value:currrentPositiveCount - 1)
             }
         }
-        UserDefaultsService.shared.updatePost(postResult: emotion)
+        UserDefaultsService.shared.updatePost(updatePostEmotion: emotion)
         FirestoreService.shared.updateDocument(collectionId: .users, documentId: userId, field: "postCount", data: UserDefaultsService.shared.getData(key: .postCount) as? Int) { _ in }
         if emotion == .positive {
             FirestoreService.shared.updateDocument(collectionId: .users, documentId: userId, field: "positiveCount", data: UserDefaultsService.shared.getData(key: .positiveCount) as? Int) { _ in }
