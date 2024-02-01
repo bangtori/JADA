@@ -23,4 +23,17 @@ extension UIView {
     @objc private func dismissKeyboard() {
         self.endEditing(true)
     }
+    
+    /// UIView 이미지로 변경
+    func transfromToImage() -> UIImage? {
+            UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+            defer {
+                UIGraphicsEndImageContext()
+            }
+            if let context = UIGraphicsGetCurrentContext() {
+                layer.render(in: context)
+                return UIGraphicsGetImageFromCurrentImageContext()
+            }
+            return nil
+        }
 }

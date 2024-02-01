@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		532B8D742B58FBAB00E1E524 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532B8D732B58FBAB00E1E524 /* FirebaseAuth */; };
+		538314952B6B86ED00947B35 /* ImageSharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538314942B6B86ED00947B35 /* ImageSharedViewController.swift */; };
 		538535372B6102B100EAE7EE /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538535362B6102B100EAE7EE /* UserDefaultsService.swift */; };
 		538535392B62261000EAE7EE /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538535382B62261000EAE7EE /* Diary.swift */; };
 		538940072B637192009ACFEA /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538940062B637192009ACFEA /* DiaryDetailViewController.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		538314942B6B86ED00947B35 /* ImageSharedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSharedViewController.swift; sourceTree = "<group>"; };
 		538535362B6102B100EAE7EE /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		538535382B62261000EAE7EE /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		538940062B637192009ACFEA /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				53A2CBD12B564E0D0060B272 /* CalendarTableViewCell.swift */,
 				53A2CB9D2B4D1DB80060B272 /* AnalyticsViewController.swift */,
 				5389401B2B690FD4009ACFEA /* MyCountingCollectionViewCell.swift */,
+				538314942B6B86ED00947B35 /* ImageSharedViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				53A2CBAC2B51204D0060B272 /* Date+Extensions.swift in Sources */,
 				53A2CB982B4D1C8C0060B272 /* TabBarController.swift in Sources */,
 				53A2CBA62B4D3C380060B272 /* DiaryListCell.swift in Sources */,
+				538314952B6B86ED00947B35 /* ImageSharedViewController.swift in Sources */,
 				53A2CBD22B564E0D0060B272 /* CalendarTableViewCell.swift in Sources */,
 				5389401C2B690FD4009ACFEA /* MyCountingCollectionViewCell.swift in Sources */,
 				53A2CB902B4C00240060B272 /* SignUpViewController.swift in Sources */,
