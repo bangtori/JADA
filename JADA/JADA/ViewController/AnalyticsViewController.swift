@@ -90,8 +90,7 @@ final class AnalyticsViewController: UIViewController {
             return }
         let dbRef = Firestore.firestore()
         
-        // MARK: - 데이터 확인 후 Date() 로 바꾸기
-        let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date(timeIntervalSince1970: 1706518572.074981)))!
+        let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date(timeIntervalSince1970: Date())))!
         let endOfMonth = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
 
         let startTimestamp = startOfMonth.timeIntervalSince1970

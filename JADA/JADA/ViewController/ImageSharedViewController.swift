@@ -78,7 +78,6 @@ final class ImageSharedViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(10)
             make.height.equalTo(sharedImageView.snp.width)
         }
-        
         saveButton.snp.makeConstraints { make in
             make.top.equalTo(sharedImageView.snp.bottom).offset(30)
             make.centerX.equalToSuperview()

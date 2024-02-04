@@ -73,6 +73,8 @@ final class ResultViewController: UIViewController {
     private func configButtons() {
         let galleryButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedGalleryButton))
         galleryButton.addGestureRecognizer(galleryButtonGesture)
+        let instagramButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedInstagramButton))
+        instagramButton.addGestureRecognizer(instagramButtonGesture)
     }
     
     private func configNavigationBarButton() {
@@ -169,7 +171,7 @@ extension ResultViewController {
         }
     }
     
-    @objc private func tappedGalleryButton(sender: UITapGestureRecognizer) {
+    @objc private func tappedGalleryButton(_ sender: UITapGestureRecognizer) {
         UIGraphicsBeginImageContextWithOptions(captureView.frame.size, false, UIScreen.main.scale)
         captureView.drawHierarchy(in: captureView.frame, afterScreenUpdates: true)
         guard let captureImage = UIGraphicsGetImageFromCurrentImageContext() else { return }
