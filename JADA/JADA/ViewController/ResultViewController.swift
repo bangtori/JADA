@@ -118,6 +118,7 @@ final class ResultViewController: UIViewController {
         contentsView.snp.makeConstraints { make in
             make.center.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
+            make.height.lessThanOrEqualTo(view.safeAreaLayoutGuide).inset(10).priority(.required)
         }
         captureView.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()
@@ -125,24 +126,26 @@ final class ResultViewController: UIViewController {
         dateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.centerX.equalToSuperview()
+            make.height.equalTo(dateLabel.font.pointSize)
         }
         iconImageView.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom)
             make.leading.trailing.equalTo(dateLabel)
             make.centerX.equalToSuperview()
-            make.height.equalTo(iconImageView.snp.width)
         }
         resultLabel.snp.makeConstraints { make in
             make.top.equalTo(iconImageView.snp.bottom)
             make.centerX.equalToSuperview()
+            make.height.equalTo(resultLabel.font.pointSize)
         }
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(resultLabel.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-10)
+            make.height.equalTo(descriptionLabel.font.pointSize * 2 + descriptionLabel.font.lineHeight)
         }
         buttonView.snp.makeConstraints { make in
-            make.top.equalTo(captureView.snp.bottom).offset(30)
+            make.top.equalTo(captureView.snp.bottom).offset(20)
             make.leading.trailing.bottom.equalToSuperview()
         }
         galleryButton.snp.makeConstraints { make in
