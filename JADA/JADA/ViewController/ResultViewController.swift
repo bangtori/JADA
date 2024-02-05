@@ -71,9 +71,11 @@ final class ResultViewController: UIViewController {
     }
     
     private func configButtons() {
-        let galleryButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedGalleryButton))
+        let galleryButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedSharedButton))
+        galleryButtonGesture.name = ImageSharedViewController.SharedType.galley.rawValue
         galleryButton.addGestureRecognizer(galleryButtonGesture)
-        let instagramButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedInstagramButton))
+        let instagramButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedSharedButton))
+        instagramButtonGesture.name = ImageSharedViewController.SharedType.instagram.rawValue
         instagramButton.addGestureRecognizer(instagramButtonGesture)
     }
     
@@ -171,17 +173,27 @@ extension ResultViewController {
         }
     }
     
-    @objc private func tappedGalleryButton(_ sender: UITapGestureRecognizer) {
+    @objc private func tappedSharedButton(_ sender: UITapGestureRecognizer) {
         UIGraphicsBeginImageContextWithOptions(captureView.frame.size, false, UIScreen.main.scale)
         captureView.drawHierarchy(in: captureView.frame, afterScreenUpdates: true)
         guard let captureImage = UIGraphicsGetImageFromCurrentImageContext() else { return }
         UIGraphicsEndImageContext()
         
-        let modalController =  ImageSharedViewController(sharedImage: captureImage)
+        var modalController: ImageSharedViewController? = nil
+        if sender.name == ImageSharedViewController.SharedType.galley.rawValue {
+            modalController = ImageSharedViewController(sharedImage: captureImage, sharedType: .galley)
+        } else if sender.name == ImageSharedViewController.SharedType.instagram.rawValue {
+            modalController = ImageSharedViewController(sharedImage: captureImage, sharedType: .instagram)
+        }
+        guard let modalController = modalController else { return }
         let navigationController = UINavigationController(rootViewController: modalController)
         navigationController.modalPresentationStyle = .formSheet
         
-        modalController.navigationItem.title = "결과 저장"
+        if sender.name == ImageSharedViewController.SharedType.galley.rawValue {
+            modalController.navigationItem.title = "이미지 저장"
+        } else {
+            modalController.navigationItem.title = "Instagram 공유"
+        }
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tappedDoneButton))
         doneButton.tintColor = .jadaDarkGreen

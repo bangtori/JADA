@@ -90,7 +90,7 @@ final class AnalyticsViewController: UIViewController {
             return }
         let dbRef = Firestore.firestore()
         
-        let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date(timeIntervalSince1970: Date())))!
+        let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))!
         let endOfMonth = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
 
         let startTimestamp = startOfMonth.timeIntervalSince1970
@@ -360,8 +360,8 @@ final class PieChartView: UIView {
             
             bgColor.setStroke()
             startAngle = 0
-            var x = cx + radius
-            var y = cy
+            let x = cx + radius
+            let y = cy
             data.forEach({ key, value in
                 let endAngle = startAngle + .pi * 2 * value
                 
