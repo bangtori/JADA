@@ -12,6 +12,7 @@ import FirebaseAuth
 final class SignInViewController: UIViewController {
     private let logoImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "AppLogoBackgroundX")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
